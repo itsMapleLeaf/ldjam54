@@ -63,10 +63,13 @@ _data = {
 "idle": SubResource("Animation_w7e6m")
 }
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("sprite", "boost_animation_player")]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter")]
+monitorable = false
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
+camera = NodePath("Camera2D")
 boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
+charge_meter = NodePath("UI/ChargeMeter")
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dqxqp")
@@ -91,3 +94,30 @@ texture = ExtResource("3_nibl4")
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
 texture = ExtResource("2_2ctgm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 7.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ChargeMeter" type="ProgressBar" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 34.0
+offset_right = 60.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
