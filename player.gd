@@ -80,12 +80,12 @@ func _on_area_entered(area: Area2D) -> void:
 		explosion.global_position = global_position
 		get_parent().add_child(explosion)
 		
-		process_mode = Node.PROCESS_MODE_DISABLED
+		set_process.call_deferred(false)
 		visible = false
 		
 		await get_tree().create_timer(1).timeout
 		
-		process_mode = Node.PROCESS_MODE_INHERIT
+		set_process(true)
 		visible = true
 		
 		camera.position = global_position
