@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfr4qa7va55hf"]
+
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="1_1f22x"]
+[ext_resource type="Script" path="res://game.gd" id="1_ystwq"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "charge_meter")]
+script = ExtResource("1_ystwq")
+player = NodePath("Player")
+charge_meter = NodePath("CanvasLayer/ChargeMeter")
+
+[node name="Player" parent="." instance=ExtResource("1_1f22x")]
+position = Vector2(637, 277)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ChargeMeter" type="ProgressBar" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 34.0
+offset_right = 60.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.0
