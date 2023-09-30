@@ -4,7 +4,7 @@ class_name Player
 const TURN_SPEED := 7.0
 const MIN_BOOST_STRENGTH := 100.0
 const MAX_BOOST_STRENGTH := 300.0
-const DRAG := 100.0
+const DRAG := 80.0
 const CHARGE_TIME := 0.5
 
 var speed := 0.0
@@ -38,4 +38,3 @@ func _process(delta: float) -> void:
 	sprite.rotation = facing
 	
 	facing += turning * TURN_SPEED * delta
-	
