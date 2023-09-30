@@ -1,10 +1,10 @@
 extends Area2D
 class_name Player
 
-const TURN_SPEED := 7.0
+const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
 const MAX_BOOST_STRENGTH := 300.0
-const DRAG := 80.0
+const DRAG := 30.0
 const CHARGE_TIME := 0.5
 
 var speed := 0.0
@@ -35,6 +35,6 @@ func _process(delta: float) -> void:
 	position += Vector2.UP.rotated(movement_direction) * speed * delta
 	speed = move_toward(speed, 0, delta * DRAG / 2)
 	
-	sprite.rotation = facing
+	rotation = facing
 	
 	facing += turning * TURN_SPEED * delta

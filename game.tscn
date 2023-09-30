@@ -54,7 +54,10 @@ max_value = 1.0
 step = 0.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 7.0
 
 [connection signal="hit_player" from="Level1" to="." method="_on_level_1_hit_player"]

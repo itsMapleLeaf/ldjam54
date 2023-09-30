@@ -31,8 +31,8 @@ func _on_level_1_hit_player(old_player: Player) -> void:
 	camera.reparent(new_player)
 	camera.reset_smoothing()
 	
-	create_tween()\
-		.set_ease(Tween.EASE_OUT)\
-		.tween_property(camera, "position", Vector2.ZERO, 0.3)
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel(true)
+	tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
+	tween.tween_property(camera, "rotation", 0, 0.3)
 	
 	old_player.queue_free()
