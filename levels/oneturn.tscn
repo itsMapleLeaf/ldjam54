@@ -3,9 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dgvhk87nfq2da" path="res://level_area.tscn" id="1_ym48y"]
 [ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="2_qyguf"]
 
-[node name="Node2D" type="Node2D"]
+[node name="oneturn" type="Node2D"]
 
 [node name="Polygon2D" parent="." instance=ExtResource("1_ym48y")]
+position = Vector2(-659, -271)
+polygon = PackedVector2Array(546, 302, 571, 343, 651, 373, 749, 355, 776, 289, 747, 174, 734, 54, 763, -75, 920, -154, 1102, -88, 1255, -84, 1289, -151, 1256, -279, 1155, -293, 1032, -276, 898, -325, 804, -319, 680, -244, 542, -122, 530, 14, 538, 70, 585, 139, 549, 231)
 
 [node name="Wormhole" parent="." instance=ExtResource("2_qyguf")]
 position = Vector2(530, -457)

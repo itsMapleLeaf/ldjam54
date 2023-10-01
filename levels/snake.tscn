@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf8nwnqt4hj5f"]
+
+[ext_resource type="PackedScene" uid="uid://dgvhk87nfq2da" path="res://level_area.tscn" id="1_r4n8d"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="2_4wdqf"]
+
+[node name="snake" type="Node2D"]
+
+[node name="Polygon2D" parent="." instance=ExtResource("1_r4n8d")]
+position = Vector2(-34, 59)
+polygon = PackedVector2Array(-55, 20, 28, 67, 128, 27, 163, -66, 78, -188, 83, -303, 117, -376, 188, -426, 221, -519, 200, -619, 133, -708, 126, -803, 128, -895, 206, -935, 235, -1031, 186, -1136, 96, -1171, -29, -1115, -37, -974, 26, -901, 16, -795, 27, -686, 106, -598, 94, -464, 8, -399, -21, -295, -20, -189, -86, -83)
+
+[node name="Wormhole" parent="." instance=ExtResource("2_4wdqf")]
+position = Vector2(56, -972)

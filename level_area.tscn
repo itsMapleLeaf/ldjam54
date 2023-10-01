@@ -3,7 +3,5 @@
 [ext_resource type="Script" path="res://level_area.gd" id="1_htstb"]
 
 [node name="Polygon2D" type="Polygon2D" groups=["PlayerKiller"]]
-position = Vector2(-657, -275)
 color = Color(0.101961, 0.0980392, 0.14902, 1)
-polygon = PackedVector2Array(546, 302, 571, 343, 651, 373, 749, 355, 776, 289, 747, 174, 734, 54, 763, -75, 920, -154, 1102, -88, 1255, -84, 1289, -151, 1256, -279, 1155, -293, 1032, -276, 898, -325, 804, -319, 680, -244, 542, -122, 530, 14, 538, 70, 585, 139, 549, 231)
 script = ExtResource("1_htstb")

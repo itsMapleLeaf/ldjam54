@@ -1,6 +1,14 @@
 extends Area2D
 class_name Player
 
+@export var sprite: Node2D
+@export var camera: Camera2D
+@export var boost_animation_player: AnimationPlayer
+@export var charge_meter: ProgressBar
+@export var smoke_spawn_marker: Node2D
+
+signal level_completed
+
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
 const MAX_BOOST_STRENGTH := 600.0
@@ -17,12 +25,6 @@ var turning := 0.0
 var strafing := 0.0
 var charge_amount := 0.0
 var smoke_wait_time := 0.0
-
-@export var sprite: Node2D
-@export var camera: Camera2D
-@export var boost_animation_player: AnimationPlayer
-@export var charge_meter: ProgressBar
-@export var smoke_spawn_marker: Node2D
 
 func _ready() -> void:
 	boost_animation_player.play("idle")
@@ -83,7 +85,7 @@ func _on_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		visible = false
 		
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		
 		set_process(true)
 		visible = true
@@ -108,3 +110,4 @@ func _on_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		add_child(warp_effect)
 		sprite.visible = false
+		level_completed.emit()
