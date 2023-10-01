@@ -647,12 +647,12 @@ func _ready() -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_auslf"]
-radius = 52.2398
+radius = 55.0
 
 [node name="Wormhole" type="Area2D" groups=["LevelComplete"]]
 
 [node name="Shade" type="Node2D" parent="."]
-scale = Vector2(0.999855, 0.999855)
+scale = Vector2(0.955404, 0.955404)
 script = SubResource("GDScript_5sixk")
 shade_size = 56
 shade_color = Color(0.0823529, 0.0745098, 0.121569, 1)
@@ -662,7 +662,7 @@ material = SubResource("ShaderMaterial_cmjl5")
 rotation = 6.28319
 scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_pofkq")
-frame_progress = 0.688616
+frame_progress = 0.20166
 script = SubResource("GDScript_6d2b3")
 metadata/_edit_lock_ = true
 
