@@ -102,3 +102,9 @@ func _on_area_entered(area: Area2D) -> void:
 		var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
 		tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
 		tween.tween_property(camera, "rotation", 0, 0.3)
+
+	if area.is_in_group("LevelComplete"):
+		var warp_effect := preload("res://warp_effect.tscn").instantiate() as Node2D
+		set_process.call_deferred(false)
+		add_child(warp_effect)
+		sprite.visible = false
