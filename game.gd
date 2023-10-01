@@ -4,7 +4,7 @@ extends Node2D
 @export var level_container: Node2D
 
 func _ready() -> void:
-	var level := preload("res://levels/level1.tscn").instantiate()
+	var level := preload("res://levels/oneturn.tscn").instantiate()
 	level_container.add_child(level)
 
 func _unhandled_input(event: InputEvent) -> void:

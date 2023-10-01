@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://dqe8tjvrxvqt1"]
 
-[ext_resource type="Texture2D" uid="uid://dhdl4vtyvsipf" path="res://kenney_smoke-particles/PNG/Explosion/explosion00.png" id="1_lgryg"]
-[ext_resource type="Texture2D" uid="uid://dfix87hcjeldg" path="res://kenney_smoke-particles/PNG/Explosion/explosion01.png" id="2_3mai4"]
-[ext_resource type="Texture2D" uid="uid://dm6ifhotbk32e" path="res://kenney_smoke-particles/PNG/Explosion/explosion02.png" id="3_5iuus"]
-[ext_resource type="Texture2D" uid="uid://rpnj7x8s3fie" path="res://kenney_smoke-particles/PNG/Explosion/explosion03.png" id="4_kd13h"]
-[ext_resource type="Texture2D" uid="uid://ca228ur3lbx8t" path="res://kenney_smoke-particles/PNG/Explosion/explosion04.png" id="5_256no"]
-[ext_resource type="Texture2D" uid="uid://bvx6p55572c0b" path="res://kenney_smoke-particles/PNG/Explosion/explosion05.png" id="6_wmf70"]
-[ext_resource type="Texture2D" uid="uid://rvyjrifbsag4" path="res://kenney_smoke-particles/PNG/Explosion/explosion06.png" id="7_6rs2q"]
-[ext_resource type="Texture2D" uid="uid://dpng4jnsfntjj" path="res://kenney_smoke-particles/PNG/Explosion/explosion07.png" id="8_iueth"]
-[ext_resource type="Texture2D" uid="uid://rk1omvftwkjk" path="res://kenney_smoke-particles/PNG/Explosion/explosion08.png" id="9_0eb5n"]
+[ext_resource type="Texture2D" uid="uid://dhdl4vtyvsipf" path="res://resources/explosion/explosion00.png" id="1_lgryg"]
+[ext_resource type="Texture2D" uid="uid://dfix87hcjeldg" path="res://resources/explosion/explosion01.png" id="2_3mai4"]
+[ext_resource type="Texture2D" uid="uid://dm6ifhotbk32e" path="res://resources/explosion/explosion02.png" id="3_5iuus"]
+[ext_resource type="Texture2D" uid="uid://rpnj7x8s3fie" path="res://resources/explosion/explosion03.png" id="4_kd13h"]
+[ext_resource type="Texture2D" uid="uid://ca228ur3lbx8t" path="res://resources/explosion/explosion04.png" id="5_256no"]
+[ext_resource type="Texture2D" uid="uid://bvx6p55572c0b" path="res://resources/explosion/explosion05.png" id="6_wmf70"]
+[ext_resource type="Texture2D" uid="uid://rvyjrifbsag4" path="res://resources/explosion/explosion06.png" id="7_6rs2q"]
+[ext_resource type="Texture2D" uid="uid://dpng4jnsfntjj" path="res://resources/explosion/explosion07.png" id="8_iueth"]
+[ext_resource type="Texture2D" uid="uid://rk1omvftwkjk" path="res://resources/explosion/explosion08.png" id="9_0eb5n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_24rei"]
 animations = [{
