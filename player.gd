@@ -29,14 +29,15 @@ var smoke_wait_time := 0.0
 func _ready() -> void:
 	boost_animation_player.play("idle")
 	boost_animation_player.animation_set_next("boost", "idle")
+	charge_meter.get_parent().modulate.a = 0
 
 func charge_by(delta: float) -> void:
 	charge_amount = minf(charge_amount + delta / CHARGE_TIME, 1)
 
 func boost() -> void:
 	speed = lerpf(MIN_BOOST_STRENGTH, MAX_BOOST_STRENGTH, charge_amount)
-	charge_amount = 0
 	movement_angle = facing_angle
+	charge_amount = 0
 	boost_animation_player.stop()
 	boost_animation_player.play("boost")
 
@@ -44,7 +45,12 @@ func _process(delta: float) -> void:
 	# collect input
 	turning = Input.get_action_strength("turn_right") - Input.get_action_strength("turn_left")
 	strafing = Input.get_action_strength("strafe_right") - Input.get_action_strength("strafe_left")
-	if Input.is_action_pressed("boost"): charge_by(delta)
+	
+	var charging := false
+	if Input.is_action_pressed("boost"):
+		charging = true
+		charge_by(delta)
+		
 	if Input.is_action_just_released("boost"): boost()
 	
 	# apply movement from speed and drag
@@ -62,7 +68,11 @@ func _process(delta: float) -> void:
 	facing_angle += turning * TURN_SPEED * delta
 	
 	# update charge meter UI
-	charge_meter.value = charge_amount
+	if charging:
+		charge_meter.get_parent().modulate.a = 1
+		charge_meter.value = charge_amount
+	else:
+		charge_meter.get_parent().modulate.a -= delta / 0.3
 	
 	# tilt the sprite based on our strafing input
 	sprite.rotation = lerp_angle(sprite.rotation, strafing * STRAFE_ROTATION, delta * STRAFE_ROTATION_SPEED)

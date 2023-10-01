@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://e6qi38y4o5q7"]
+[gd_scene load_steps=13 format=3 uid="uid://e6qi38y4o5q7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tij7q"]
 [ext_resource type="Texture2D" uid="uid://iv3xi3osmeju" path="res://resources/Main Ship - Engines - Supercharged Engine - Spritesheet.png" id="2_5k3em"]
 [ext_resource type="Texture2D" uid="uid://d12a2qkk4tjnq" path="res://resources/Main Ship - Engines - Supercharged Engine.png" id="3_60lvt"]
 [ext_resource type="Texture2D" uid="uid://43nhsujsyjxy" path="res://resources/Main Ship - Base - Slight damage.png" id="4_0grsm"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dqxqp"]
-radius = 11.1803
 
 [sub_resource type="Animation" id="Animation_bhac3"]
 length = 0.001
@@ -63,22 +60,46 @@ _data = {
 "idle": SubResource("Animation_w7e6m")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51evb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.328125, 0.746094, 0.363281, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73kyl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnit6"]
+bg_color = Color(0.329412, 0.74902, 0.364706, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqxqp"]
+radius = 11.1803
+
 [node name="Player" type="Area2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker")]
 monitorable = false
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
 camera = NodePath("Camera2D")
 boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
-charge_meter = NodePath("UI/ChargeMeter")
+charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
 smoke_spawn_marker = NodePath("Marker2D")
-
-[node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dqxqp")
 
 [node name="Sprites" type="Node2D" parent="."]
 
 [node name="Boost" type="Sprite2D" parent="Sprites"]
-position = Vector2(0, 6)
+position = Vector2(0, 2)
 texture = ExtResource("2_5k3em")
 hframes = 4
 vframes = 2
@@ -90,10 +111,11 @@ libraries = {
 }
 
 [node name="Engine" type="Sprite2D" parent="Sprites"]
-position = Vector2(0, 6)
+position = Vector2(0, 2)
 texture = ExtResource("3_60lvt")
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -4)
 texture = ExtResource("4_0grsm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -104,24 +126,42 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 17)
+position = Vector2(0, 11)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="ChargeMeter" type="ProgressBar" parent="UI"]
+[node name="ChargeMeterOutline" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = 34.0
-offset_right = 60.0
-offset_bottom = 61.0
+offset_left = -26.0
+offset_top = 18.0
+offset_right = 26.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_51evb")
+
+[node name="ChargeMeter" type="ProgressBar" parent="ChargeMeterOutline"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_73kyl")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bnit6")
 max_value = 1.0
 step = 0.0
+value = 0.5
+show_percentage = false
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dqxqp")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
