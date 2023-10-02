@@ -1,8 +1,9 @@
 todo:
-- after level complete, show completion time and let player go to next or retry
+- [x] results screen: let player go to next or retry
+- [ ] show completion time
+- [ ] screen shake
+- [ ] sound effects
 - tutorial hints for first three levels
-- screen shake
-- sound effects
 - time limit (?)
 - level list screen
 - rankings

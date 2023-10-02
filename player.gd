@@ -7,6 +7,10 @@ class_name Player
 @export var charge_meter: ProgressBar
 @export var smoke_spawn_marker: Node2D
 @export var hitbox: Area2D
+@export var results_screen: CanvasLayer
+@export var results_title_label: Label
+@export var next_mission_button: Button
+@export var previous_mission_button: Button
 
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
@@ -23,6 +27,7 @@ var movement_angle := 0.0
 var facing_angle := 0.0
 var turning := 0.0
 var strafing := 0.0
+var charging := false
 var charge_amount := 0.0
 var smoke_wait_time := 0.0
 
@@ -40,6 +45,21 @@ var levels := [
 	"res://levels/end.tscn",
 ]
 
+var current_level: String:
+	get: return get_tree().current_scene.scene_file_path
+
+var current_level_index: int:
+	get: return levels.find(current_level)
+
+var next_level: String:
+	get: return levels[next_level_index]
+	
+var next_level_index: int:
+	get: return (current_level_index + 1) % levels.size()
+	
+var previous_level: String:
+	get: return levels[(current_level_index - 1) % levels.size()]
+
 func reset() -> void:
 	camera.position = global_position
 	camera.rotation = global_rotation
@@ -50,6 +70,8 @@ func reset() -> void:
 	movement_angle = 0
 	facing_angle = 0
 	turning = 0
+	strafing = 0
+	charging = false
 	charge_amount = 0
 
 	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
@@ -62,13 +84,14 @@ func reset() -> void:
 func _ready() -> void:
 	boost_animation_player.play("idle")
 	boost_animation_player.animation_set_next("boost", "idle")
-	
 	charge_meter.get_parent().modulate.a = 0
 
 func charge_by(delta: float) -> void:
 	charge_amount = minf(charge_amount + delta / CHARGE_TIME, 1)
 
 func boost() -> void:
+	if not charging: return
+	charging = false
 	speed = lerpf(MIN_BOOST_STRENGTH, MAX_BOOST_STRENGTH, charge_amount)
 	movement_angle = facing_angle
 	charge_amount = 0
@@ -76,9 +99,14 @@ func boost() -> void:
 	boost_animation_player.play("boost")
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("boost"):
+		charging = true
+		
+	if event.is_action_released("boost"):
+		boost()
+	
 	if event.is_action_pressed("reset"):
 		reset()
-		return
 		
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
@@ -87,14 +115,7 @@ func _process(delta: float) -> void:
 	# collect input
 	turning = Input.get_action_strength("turn_right") - Input.get_action_strength("turn_left")
 	strafing = Input.get_action_strength("strafe_right") - Input.get_action_strength("strafe_left")
-	
-	var charging := false
-	if Input.is_action_pressed("boost"):
-		charging = true
-		charge_by(delta)
-		
-	if Input.is_action_just_released("boost"): boost()
-	
+
 	# apply movement from speed and drag
 	speed = move_toward(speed, 0, delta * DRAG / 2)
 	global_position += Vector2.UP.rotated(movement_angle) * speed * delta
@@ -126,8 +147,9 @@ func _process(delta: float) -> void:
 	# apply turning
 	facing_angle += turning * TURN_SPEED * delta
 	
-	# update charge meter UI
+	# update charge state
 	if charging:
+		charge_amount = minf(charge_amount + delta / CHARGE_TIME, 1)
 		charge_meter.get_parent().modulate.a = 1
 		charge_meter.value = charge_amount
 	else:
@@ -155,13 +177,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		visible = false
 		
-		var current_level := get_tree().current_scene.scene_file_path
-		var current_level_index := levels.find(current_level)
-		if current_level_index < levels.size() - 1:
-			await get_tree().create_timer(1).timeout
-			get_tree().change_scene_to_file(levels[current_level_index + 1])
-		else:
-			$EndScreen.show()
+		_show_results()
 	
 	if area.is_in_group("LevelObstacle"):
 		_kill()
@@ -180,3 +196,36 @@ func _kill():
 	await get_tree().create_timer(0.5).timeout
 	
 	reset()
+
+func _show_results():
+	set_process(false)
+	
+	results_title_label.text = "OBJECTIVE %s COMPLETE" % (current_level_index + 1)
+	results_screen.show()
+	
+	if next_level_index == 0:
+		next_mission_button.text = "RETURN TO FIRST MISSION"
+	else:
+		next_mission_button.text = "NEXT MISSION"
+		
+	previous_mission_button.visible = current_level_index > 0
+	
+	var buttons := results_screen.find_children("", "Button", true)
+	if buttons.size() > 0:
+		var first_button := buttons[0]
+		if first_button is Button:
+			first_button.grab_focus()
+
+func _hide_results():
+	results_screen.hide()
+	set_process(true)
+
+func _on_next_pressed() -> void:
+	get_tree().change_scene_to_file(next_level)
+
+func _on_retry_pressed() -> void:
+	reset()
+	_hide_results.call_deferred()
+
+func _on_previous_pressed() -> void:
+	get_tree().change_scene_to_file(previous_level)
