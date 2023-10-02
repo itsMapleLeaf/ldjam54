@@ -115,11 +115,11 @@ rotation = 0.472848
 position = Vector2(237, 331)
 
 [node name="PathFollow2D" parent="HellCluster/Path2D" index="0"]
-position = Vector2(-474.899, -295.751)
-progress = 75.4331
+position = Vector2(-31.487, -348.639)
+progress = 599.377
 
 [node name="Rotation" parent="HellCluster/Path2D/PathFollow2D" index="0"]
-rotation = -3460.1
+rotation = -93.2425
 
 [node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D/PathFollow2D/Rotation/LevelObstacle" index="1"]
 polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
@@ -128,11 +128,11 @@ polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, 
 position = Vector2(-408, 42)
 
 [node name="PathFollow2D" parent="HellCluster/Path2D2" index="0"]
-position = Vector2(-246.52, -206.273)
-progress = 331.06
+position = Vector2(-511.643, -344.408)
+progress = 14.3769
 
 [node name="Rotation" parent="HellCluster/Path2D2/PathFollow2D" index="0"]
-rotation = -3460.1
+rotation = -93.2425
 
 [node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D2/PathFollow2D/Rotation/LevelObstacle" index="1"]
 polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
@@ -141,11 +141,11 @@ polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, 
 position = Vector2(158, -346)
 
 [node name="PathFollow2D" parent="HellCluster/Path2D3" index="0"]
-position = Vector2(-8.71957, -405.854)
-progress = 661.06
+position = Vector2(-233.354, -208.264)
+progress = 344.377
 
 [node name="Rotation" parent="HellCluster/Path2D3/PathFollow2D" index="0"]
-rotation = -3460.1
+rotation = -93.2425
 
 [node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D3/PathFollow2D/Rotation/LevelObstacle" index="1"]
 polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
@@ -160,16 +160,16 @@ rotation = -1.23332
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle"]
-position = Vector2(-5.62289, -417.287)
+position = Vector2(-91.4883, -272.722)
 rotation = -0.523823
-progress = 672.906
+progress = 502.019
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
 follow_speed_pixels = 300.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
-rotation = -3460.1
+rotation = -93.2425
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -193,9 +193,9 @@ rotation = -3.73668
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle2"]
-position = Vector2(6.28835, -530.502)
+position = Vector2(-444.826, -266.587)
 rotation = -0.523823
-progress = 787.094
+progress = 117.355
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
@@ -203,7 +203,7 @@ follow_speed_pixels = -300.0
 offset_pixels = 1460.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
-rotation = -3460.1
+rotation = -93.2425
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -231,7 +231,6 @@ position = Vector2(-514, -843)
 position = Vector2(5305, 528)
 
 [node name="Player" parent="." instance=ExtResource("4_1df2n")]
-position = Vector2(2196, -72)
 
 [editable path="HellCluster"]
 [editable path="HellCluster/Path2D"]
