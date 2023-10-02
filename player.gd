@@ -26,6 +26,20 @@ var strafing := 0.0
 var charge_amount := 0.0
 var smoke_wait_time := 0.0
 
+# this really shouldn't be here, but game jam code LOL
+var levels := [
+	"res://levels/straight.tscn",
+	"res://levels/turns.tscn",
+	"res://levels/snake.tscn",
+	"res://levels/split_paths.tscn",
+	"res://levels/big_curve.tscn",
+	"res://levels/obstacles.tscn",
+	"res://levels/hard_turns.tscn",
+	"res://levels/gravity_pits.tscn",
+	"res://levels/hell.tscn",
+	"res://levels/end.tscn",
+]
+
 func reset() -> void:
 	camera.position = global_position
 	camera.rotation = global_rotation
@@ -132,7 +146,7 @@ func _process(delta: float) -> void:
 		get_parent().get_child(get_index() - 1).add_sibling(smoke)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area is Wormhole:
+	if area.is_in_group("LevelComplete"):
 		var warp_effect := preload("res://warp_effect.tscn").instantiate() as Node2D
 		warp_effect.global_position = global_position
 		warp_effect.rotation = rotation
@@ -141,12 +155,13 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		visible = false
 		
-		if not area.next_level:
+		var current_level := get_tree().current_scene.scene_file_path
+		var current_level_index := levels.find(current_level)
+		if current_level_index < levels.size() - 1:
+			await get_tree().create_timer(1).timeout
+			get_tree().change_scene_to_file(levels[current_level_index + 1])
+		else:
 			$EndScreen.show()
-			return
-		
-		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file(area.next_level)
 	
 	if area.is_in_group("LevelObstacle"):
 		_kill()

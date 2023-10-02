@@ -1,15 +1,12 @@
-mvp:
-- complete remaining levels
-- game complete screen?
-
 todo:
-- sound effects
-- rankings + after level complete, let player go to next or retry
+- after level complete, show completion time and let player go to next or retry
 - tutorial hints for first three levels
-- time limit (?)
 - screen shake
-- fade transition between levels
+- sound effects
+- time limit (?)
 - level list screen
+- rankings
+- fade transition between levels
 - speedometer
 
 level ideas:

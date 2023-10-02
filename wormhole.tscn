@@ -1,7 +1,6 @@
-[gd_scene load_steps=89 format=3 uid="uid://bffyh0psdenmv"]
+[gd_scene load_steps=88 format=3 uid="uid://bffyh0psdenmv"]
 
 [ext_resource type="Texture2D" uid="uid://cvaa6xh66ehhp" path="res://resources/Planet_Galaxy_Big_Purple_Smooth_10x8.png" id="1_aqiii"]
-[ext_resource type="Script" path="res://wormhole.gd" id="1_nhj2s"]
 [ext_resource type="PackedScene" uid="uid://bja8ij71d8hnq" path="res://circle_2d.tscn" id="2_1iri1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmjl5"]
@@ -647,7 +646,6 @@ radius = 55.0
 
 [node name="Wormhole" type="Area2D" groups=["LevelComplete"]]
 collision_layer = 8
-script = ExtResource("1_nhj2s")
 
 [node name="Circle2D" parent="." instance=ExtResource("2_1iri1")]
 
