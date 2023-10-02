@@ -33,6 +33,6 @@ polygon = PackedVector2Array(-7.88512, 370.128, -47.6507, 60.4707, -170.734, -17
 [node name="Wormhole" parent="." instance=ExtResource("3_hktxm")]
 position = Vector2(-1917, -594)
 rotation = 0.246512
-next_level = "res://levels/asteroid_field.tscn"
+next_level = "res://levels/hell.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_pa42w")]
