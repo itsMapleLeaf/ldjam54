@@ -19,4 +19,4 @@ level ideas:
 - [x] straight with some moderate turns black holes at the sides
 - [x] a long, narrow, slightly-curved level
 - [x] big area with lots of moving obstacles all over the place moving at different speeds
-- [ ] long narrow winding paths with black holes + bigger areas with moving obstacles
+- [x] long narrow winding paths with black holes + bigger areas with moving obstacles

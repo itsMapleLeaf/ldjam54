@@ -1,7 +1,7 @@
 @tool
 extends PathFollow2D
 
-@export_range(0, 10000, 1, "or_greater") var follow_speed_pixels := 100.0
+@export_range(-10000, 10000, 1, "or_greater") var follow_speed_pixels := 100.0
 @export_range(0, 10000, 1, "or_greater") var offset_pixels := 0.0
 @export var preview := true:
 	set(value):

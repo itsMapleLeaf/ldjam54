@@ -141,7 +141,9 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		visible = false
 		
-		if not area.next_level: return
+		if not area.next_level:
+			$EndScreen.show()
+			return
 		
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file(area.next_level)

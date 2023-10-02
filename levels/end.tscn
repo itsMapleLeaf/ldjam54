@@ -1,0 +1,239 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqp377bovbc3g"]
+
+[ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_4fose"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_bj442"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="3_6f6bt"]
+[ext_resource type="PackedScene" uid="uid://dgq48q8e8tai0" path="res://hell_cluster.tscn" id="3_er4bs"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_1df2n"]
+[ext_resource type="PackedScene" uid="uid://bcqlficr47ppt" path="res://gravity_pit.tscn" id="6_ex1vk"]
+[ext_resource type="Script" path="res://path_follow.gd" id="7_tkpah"]
+[ext_resource type="Script" path="res://rotation.gd" id="8_4prnx"]
+[ext_resource type="PackedScene" uid="uid://dwmlmuknfu4kd" path="res://level_obstacle.tscn" id="9_k08xs"]
+
+[sub_resource type="Curve2D" id="Curve2D_ervwh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -518.802, -356.872, -231.101, 83.2987, 231.101, -83.2987, -178.272, -223.099, 0, 0, 0, 0, 1.60059, -583.787)
+}
+point_count = 3
+
+[node name="Level" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+metadata/_edit_vertical_guides_ = []
+
+[node name="LevelArea2D" parent="." instance=ExtResource("1_4fose")]
+
+[node name="RegularCollisionPolygon2D" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-5, 0)
+rotation = 0.987284
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D7" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-788, 706)
+rotation = 0.987284
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -100, 64.2788, -76.6044, 98.4808, -17.3648, 86.6025, 50, 34.202, 93.9693, -34.202, 93.9693, -86.6025, 50, -98.4808, -17.3648, -64.2788, -76.6044)
+sides = 9
+
+[node name="RegularCollisionPolygon2D8" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-937, 837)
+rotation = 0.987284
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -100, 64.2788, -76.6044, 98.4808, -17.3648, 86.6025, 50, 34.202, 93.9693, -34.202, 93.9693, -86.6025, 50, -98.4808, -17.3648, -64.2788, -76.6044)
+sides = 9
+
+[node name="RegularCollisionPolygon2D11" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-630, 849)
+rotation = 0.987284
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -77, 60.201, -48.0087, 75.0695, 17.1341, 33.4091, 69.3746, -33.409, 69.3746, -75.0695, 17.1341, -60.201, -48.0087)
+sides = 7
+radius = 77.0
+
+[node name="RegularCollisionPolygon2D9" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-744, 907)
+rotation = 0.987284
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -60, 38.5673, -45.9627, 59.0885, -10.4189, 51.9615, 30, 20.5212, 56.3816, -20.5212, 56.3816, -51.9615, 30, -59.0885, -10.4189, -38.5673, -45.9627)
+sides = 9
+radius = 60.0
+
+[node name="RegularCollisionPolygon2D3" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-338, -779)
+rotation = -0.527169
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -50, 43.3013, -25, 43.3013, 25, -4.37114e-06, 50, -43.3013, 25, -43.3013, -25)
+radius = 50.0
+
+[node name="RegularCollisionPolygon2D4" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-495, -694)
+rotation = 1.48555
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -50, 43.3013, -25, 43.3013, 25, -4.37114e-06, 50, -43.3013, 25, -43.3013, -25)
+radius = 50.0
+
+[node name="RegularCollisionPolygon2D5" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-662, -751)
+rotation = 3.57131
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -50, 43.3013, -25, 43.3013, 25, -4.37114e-06, 50, -43.3013, 25, -43.3013, -25)
+radius = 50.0
+
+[node name="RegularCollisionPolygon2D6" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(-812, -645)
+rotation = 3.46806
+scale = Vector2(2.43746, 2.43746)
+polygon = PackedVector2Array(0, -50, 43.3013, -25, 43.3013, 25, -4.37114e-06, 50, -43.3013, 25, -43.3013, -25)
+radius = 50.0
+
+[node name="RegularCollisionPolygon2D2" parent="LevelArea2D" instance=ExtResource("2_bj442")]
+position = Vector2(5305.14, 526.955)
+rotation = 2.53153
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea2D"]
+polygon = PackedVector2Array(-117, -181, -30, -326, -8, -707, -47, -760, -119, -769, -205, -750, -280, -705, -364, -876, -41, -978, 166, -975, 220, -935, 229, -791, 181, -705, 97, -494, 90, -320, 145, -142)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LevelArea2D"]
+position = Vector2(-868, 1773)
+rotation = 0.906475
+polygon = PackedVector2Array(-863.662, -342.254, -1104.31, -429.083, -1340, -428, -1627, -416, -1863, -508, -2026, -723, -2105, -993, -2084, -1270, -1997.99, -1539.13, -1952.2, -1595.99, -1780, -1511, -1783.72, -1434.85, -1890, -1254, -1927, -1016, -1852, -750, -1675, -621, -1389, -605, -1151, -626, -951.323, -810.981)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="LevelArea2D"]
+polygon = PackedVector2Array(-1037, 1028, -929, 1140, -904, 1720, -869, 1933, -608, 2014, -157, 1962, 216, 1823, 514, 1641, 481.153, 1434.07, 371, 1208, 443, 1053, 692, 974, 629, 723, 196, 738, -98, 958, -11, 1239, 7, 1455, -170, 1565, -348, 1580, -451, 1524, -516, 1187, -545, 1064, -485, 900)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="LevelArea2D"]
+position = Vector2(-96, 34)
+polygon = PackedVector2Array(347, 798, 878, 616, 1416, 588, 1720, 758, 1906, 754, 2245, 632, 2562, 606, 2835, 702, 3016, 667, 3210, 531, 3394, 467, 3747, 429, 4075, 473, 4411, 403, 4871, 446, 5358, 424, 5365, 560, 4873, 531, 4408, 608, 4077, 528, 3762, 531, 3474, 654, 3074, 867, 2845, 877, 2575, 829, 2364, 764, 2151, 871, 1740, 970, 1514, 860, 1264, 818, 1036, 852, 848, 960, 469, 1000)
+
+[node name="HellCluster" parent="." instance=ExtResource("3_er4bs")]
+rotation = 0.472848
+
+[node name="Path2D" parent="HellCluster" index="0"]
+position = Vector2(237, 331)
+
+[node name="PathFollow2D" parent="HellCluster/Path2D" index="0"]
+position = Vector2(-474.899, -295.751)
+progress = 75.4331
+
+[node name="Rotation" parent="HellCluster/Path2D/PathFollow2D" index="0"]
+rotation = -3460.1
+
+[node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D/PathFollow2D/Rotation/LevelObstacle" index="1"]
+polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
+
+[node name="Path2D2" parent="HellCluster" index="1"]
+position = Vector2(-408, 42)
+
+[node name="PathFollow2D" parent="HellCluster/Path2D2" index="0"]
+position = Vector2(-246.52, -206.273)
+progress = 331.06
+
+[node name="Rotation" parent="HellCluster/Path2D2/PathFollow2D" index="0"]
+rotation = -3460.1
+
+[node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D2/PathFollow2D/Rotation/LevelObstacle" index="1"]
+polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
+
+[node name="Path2D3" parent="HellCluster" index="2"]
+position = Vector2(158, -346)
+
+[node name="PathFollow2D" parent="HellCluster/Path2D3" index="0"]
+position = Vector2(-8.71957, -405.854)
+progress = 661.06
+
+[node name="Rotation" parent="HellCluster/Path2D3/PathFollow2D" index="0"]
+rotation = -3460.1
+
+[node name="RegularCollisionPolygon2D" parent="HellCluster/Path2D3/PathFollow2D/Rotation/LevelObstacle" index="1"]
+polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
+
+[node name="HellCluster2" type="Node2D" parent="."]
+position = Vector2(-837, 784)
+rotation = 2.06534
+
+[node name="HellClusterObstacle" type="Path2D" parent="HellCluster2"]
+position = Vector2(113.343, -169.051)
+rotation = -1.23332
+curve = SubResource("Curve2D_ervwh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle"]
+position = Vector2(-5.62289, -417.287)
+rotation = -0.523823
+progress = 672.906
+rotates = false
+cubic_interp = false
+script = ExtResource("7_tkpah")
+follow_speed_pixels = 300.0
+
+[node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
+rotation = -3460.1
+script = ExtResource("8_4prnx")
+speed = -2.64
+
+[node name="LevelObstacle" parent="HellCluster2/HellClusterObstacle/PathFollow2D/Rotation" instance=ExtResource("9_k08xs")]
+
+[node name="RegularCollisionPolygon2D" parent="HellCluster2/HellClusterObstacle/PathFollow2D/Rotation/LevelObstacle" instance=ExtResource("2_bj442")]
+polygon = PackedVector2Array(0, -70, 60.6218, -35, 60.6218, 35, -6.11959e-06, 70, -60.6218, 35, -60.6218, -35)
+radius = 70.0
+
+[node name="_Timer_75970" type="Timer" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="_Timer_123160" type="Timer" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="HellClusterObstacle2" type="Path2D" parent="HellCluster2"]
+position = Vector2(-130.952, -53.2231)
+rotation = -3.73668
+curve = SubResource("Curve2D_ervwh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle2"]
+position = Vector2(6.28835, -530.502)
+rotation = -0.523823
+progress = 787.094
+rotates = false
+cubic_interp = false
+script = ExtResource("7_tkpah")
+follow_speed_pixels = -300.0
+offset_pixels = 1460.0
+
+[node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
+rotation = -3460.1
+script = ExtResource("8_4prnx")
+speed = -2.64
+
+[node name="LevelObstacle" parent="HellCluster2/HellClusterObstacle2/PathFollow2D/Rotation" instance=ExtResource("9_k08xs")]
+
+[node name="RegularCollisionPolygon2D" parent="HellCluster2/HellClusterObstacle2/PathFollow2D/Rotation/LevelObstacle" instance=ExtResource("2_bj442")]
+polygon = PackedVector2Array(0, -70, 60.6218, -35, 60.6218, 35, -6.11959e-06, 70, -60.6218, 35, -60.6218, -35)
+radius = 70.0
+
+[node name="_Timer_75970" type="Timer" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="_Timer_123160" type="Timer" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="GravityPit" parent="." instance=ExtResource("6_ex1vk")]
+position = Vector2(-649, -598)
+
+[node name="GravityPit2" parent="." instance=ExtResource("6_ex1vk")]
+position = Vector2(-514, -843)
+
+[node name="Wormhole" parent="." instance=ExtResource("3_6f6bt")]
+position = Vector2(5305, 528)
+
+[node name="Player" parent="." instance=ExtResource("4_1df2n")]
+position = Vector2(2196, -72)
+
+[editable path="HellCluster"]
+[editable path="HellCluster/Path2D"]
+[editable path="HellCluster/Path2D2"]
+[editable path="HellCluster/Path2D3"]
