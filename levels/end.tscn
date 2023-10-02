@@ -116,9 +116,9 @@ scale = Vector2(1.035, 1.035)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster/Path2D"]
-position = Vector2(-498.147, -318.367)
+position = Vector2(-289.607, -170.003)
 rotation = -0.523823
-progress = 43.7385
+progress = 307.003
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
@@ -126,7 +126,7 @@ follow_speed_pixels = 310.0
 offset_pixels = 585.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D/PathFollow2D"]
-rotation = -723.584
+rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -151,9 +151,9 @@ scale = Vector2(1.035, 1.035)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster/Path2D2"]
-position = Vector2(-6.12314, -368.449)
+position = Vector2(-496.399, -315.61)
 rotation = -0.523823
-progress = 703.409
+progress = 47.0027
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
@@ -161,7 +161,7 @@ follow_speed_pixels = 310.0
 offset_pixels = 325.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D2/PathFollow2D"]
-rotation = -723.584
+rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -186,9 +186,9 @@ scale = Vector2(1.035, 1.035)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster/Path2D3"]
-position = Vector2(-297.692, -171.715)
+position = Vector2(-59.0079, -238.504)
 rotation = -0.523823
-progress = 298.739
+progress = 562.003
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
@@ -196,7 +196,7 @@ follow_speed_pixels = 310.0
 offset_pixels = 840.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D3/PathFollow2D"]
-rotation = -723.584
+rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -224,16 +224,16 @@ rotation = -1.23332
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle"]
-position = Vector2(-66.3172, -229.184)
+position = Vector2(-503.267, -326.759)
 rotation = -0.523823
-progress = 550.156
+progress = 33.907
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
 follow_speed_pixels = 475.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
-rotation = -723.584
+rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -257,9 +257,9 @@ rotation = -3.73668
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle2"]
-position = Vector2(-412.912, -225.064)
+position = Vector2(-52.0042, -248.532)
 rotation = -0.523823
-progress = 170.815
+progress = 574.236
 rotates = false
 cubic_interp = false
 script = ExtResource("7_tkpah")
@@ -267,7 +267,7 @@ follow_speed_pixels = 475.0
 offset_pixels = 1460.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
-rotation = -723.584
+rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 

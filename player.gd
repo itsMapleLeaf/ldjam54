@@ -13,6 +13,7 @@ class_name Player
 @export var previous_mission_button: Button
 @export var completion_time_label: Label
 @export var results_completion_time_label: Label
+@export var audio_player: AudioStreamPlayer
 
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
@@ -85,6 +86,7 @@ func reset() -> void:
 	tween.tween_property(camera, "rotation", 0, 0.3)
 	
 	set_process(true)
+	set_process_unhandled_input(true)
 	visible = true
 
 func _ready() -> void:
@@ -103,14 +105,19 @@ func boost() -> void:
 	speed = lerpf(MIN_BOOST_STRENGTH, MAX_BOOST_STRENGTH, charge_amount)
 	movement_angle = facing_angle
 	$Shaker.shake(max(3 * charge_amount, 1), 0.2)
+	$ChargeSound.stop()
+	$BoostSound.play()
 	
 	charge_amount = 0
 	boost_animation_player.stop()
 	boost_animation_player.play("boost")
 
 func _unhandled_input(event: InputEvent) -> void:
+	if results_screen.visible: return
+	
 	if event.is_action_pressed("boost"):
 		charging = true
+		$ChargeSound.play()
 		
 	if event.is_action_released("boost"):
 		boost()
@@ -131,8 +138,14 @@ func _process(delta: float) -> void:
 	global_position += Vector2.UP.rotated(movement_angle) * speed * delta
 	speed = move_toward(speed, 0, delta * DRAG / 2)
 	
-	# apply movement from strafing
+	# apply movement and sound from strafing
 	global_position += Vector2.RIGHT.rotated(facing_angle) * strafing * STRAFE_SPEED * delta
+	
+	$StrafeSound.volume_db = -35 + absf(strafing) * 13
+	if strafing != 0 && not $StrafeSound.playing:
+		$StrafeSound.play()
+	elif strafing == 0 && $StrafeSound.playing:
+		$StrafeSound.stop()
 	
 	# apply gravity pit attraction
 	var gravity_pit = hitbox.get_overlapping_areas().filter(
@@ -162,6 +175,7 @@ func _process(delta: float) -> void:
 		charge_amount = minf(charge_amount + delta / CHARGE_TIME, 1)
 		charge_meter.get_parent().modulate.a = 1
 		charge_meter.value = charge_amount
+		$ChargeSound.pitch_scale = 1 + charge_amount
 	else:
 		charge_meter.get_parent().modulate.a -= delta / 0.3
 	
@@ -194,6 +208,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		set_process.call_deferred(false)
 		visible = false
 		
+		$CompleteSound.play()
+		$StrafeSound.stop()
+		$ChargeSound.stop()
+		
 		_show_results()
 	
 	if area.is_in_group("LevelObstacle"):
@@ -208,9 +226,13 @@ func _kill():
 	add_sibling(explosion)
 	
 	set_process.call_deferred(false)
+	set_process_unhandled_input(false)
 	visible = false
 	
 	$Shaker.shake(16, 0.2)
+	$DeathSound.play()
+	$StrafeSound.stop()
+	$ChargeSound.stop()
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -218,6 +240,7 @@ func _kill():
 
 func _show_results():
 	set_process(false)
+	set_process_unhandled_input(false)
 	
 	results_title_label.text = "OBJECTIVE %s COMPLETE" % (current_level_index + 1)
 	results_screen.show()
