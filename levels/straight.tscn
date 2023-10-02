@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="2_mig8h"]
 [ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_nolcb"]
 
-[node name="straight" type="Node2D"]
+[node name="Level" type="Node2D"]
 metadata/_edit_horizontal_guides_ = []
 
 [node name="LevelArea2D" parent="." instance=ExtResource("1_lcjjq")]
