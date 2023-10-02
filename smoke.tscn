@@ -112,18 +112,13 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_gqk14"]
 script/source = "extends AnimatedSprite2D
 
-var opacity := 1.0
-
 func _ready() -> void:
 	frame = randi() % sprite_frames.get_frame_count(\"default\")
-	
-	var tween := create_tween().set_ease(Tween.EASE_IN).set_parallel(true)
-	tween.tween_property(self, \"opacity\", 0, 0.5)
-	await tween.finished
-	queue_free()
 
 func _process(delta: float) -> void:
-	modulate.a = opacity
+	modulate.a = move_toward(modulate.a, 0, delta / 0.5)
+	if modulate.a <= 0:
+		queue_free()
 "
 
 [node name="Explosion" type="AnimatedSprite2D"]
