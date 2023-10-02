@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn0t24f54yaw8"]
+
+[ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_kvlfi"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_j4i1d"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="3_jvd2g"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_heowc"]
+
+[node name="Level" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="LevelArea" parent="." instance=ExtResource("1_kvlfi")]
+position = Vector2(0, -1)
+
+[node name="RegularCollisionPolygon2D" parent="LevelArea" instance=ExtResource("2_j4i1d")]
+position = Vector2(-2.14291, 2.75299)
+rotation = 1.62845
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D2" parent="LevelArea" instance=ExtResource("2_j4i1d")]
+position = Vector2(-15.6906, -1137.48)
+rotation = 1.92724
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
+position = Vector2(22, -7)
+polygon = PackedVector2Array(8, -65, 185, -127, 303, -200, 383, -326, 351, -582, 131, -447, 75, -362, 59, -249, 6, -156, -71, -108, -151, -29, -260, 23, -380, 148, -508, 254, -589, 312, -691, 142, -664, -56, -616, -276, -647, -508, -624, -723, -668, -879, -665, -1135, -549, -1220, -415, -1148, -338, -988, -44, -908, -58, -1056, 46, -1130, 116, -1008, 269, -898, 247, -764, 191, -716, 49, -746, -96, -740, -356, -873, -455, -841, -491, -648, -448, -456, -480, -238, -435, -56, -318, -96, -207, -234, -119, -290, -75, -364, -120.502, -519.788, -39, -625, 151, -664, 267, -732, 330, -802, 473, -803, 545, -672, 574, -489, 497, -323, 515, -177, 388, -89, 204, -60, 36, 41)
+
+[node name="Wormhole" parent="." instance=ExtResource("3_jvd2g")]
+position = Vector2(-15.6906, -1146.48)
+
+[node name="Player" parent="." instance=ExtResource("4_heowc")]

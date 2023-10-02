@@ -31,5 +31,6 @@ polygon = PackedVector2Array(-88, 25, -440, -139, -652, -343, -668, -599, -412, 
 
 [node name="Wormhole" parent="." instance=ExtResource("3_chfyr")]
 position = Vector2(-15.6906, -1146.48)
+next_level = "res://levels/hard_turns.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_lp1qd")]
