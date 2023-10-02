@@ -23,6 +23,9 @@ rotation = 1.92724
 polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
 sides = 7
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
+polygon = PackedVector2Array(-56, -55, -100, -223, -104, -331, -44, -463, -24, -559, -25.0074, -659.452, -64, -751, -100, -867, -92, -987, -64, -1091, 40, -1091, -8, -1007, -28, -923, -12, -835, 40, -751, 52, -651, 56, -551, 24, -435, -8, -295, -4, -187, 44, -55)
+
 [node name="Wormhole" parent="." instance=ExtResource("2_4wdqf")]
 position = Vector2(-15.6906, -1146.48)
 
