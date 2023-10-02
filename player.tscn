@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://e6qi38y4o5q7"]
+[gd_scene load_steps=14 format=3 uid="uid://e6qi38y4o5q7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tij7q"]
 [ext_resource type="Texture2D" uid="uid://iv3xi3osmeju" path="res://resources/Main Ship - Engines - Supercharged Engine - Spritesheet.png" id="2_5k3em"]
 [ext_resource type="Texture2D" uid="uid://d12a2qkk4tjnq" path="res://resources/Main Ship - Engines - Supercharged Engine.png" id="3_60lvt"]
 [ext_resource type="Texture2D" uid="uid://43nhsujsyjxy" path="res://resources/Main Ship - Base - Slight damage.png" id="4_0grsm"]
+[ext_resource type="PackedScene" uid="uid://m65yk53ryboh" path="res://level_area_detector.tscn" id="5_e3s28"]
 
 [sub_resource type="Animation" id="Animation_bhac3"]
 length = 0.001
@@ -84,11 +85,10 @@ corner_radius_bottom_right = 1
 corner_radius_bottom_left = 1
 anti_aliasing = false
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dqxqp"]
-radius = 11.1803
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3wbb"]
+radius = 9.0
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker")]
-monitorable = false
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
 camera = NodePath("Camera2D")
@@ -97,6 +97,7 @@ charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
 smoke_spawn_marker = NodePath("Marker2D")
 
 [node name="Sprites" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Boost" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, 2)
@@ -124,9 +125,11 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
+metadata/_edit_lock_ = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 11)
+metadata/_edit_lock_ = true
 
 [node name="ChargeMeterOutline" type="Panel" parent="."]
 anchors_preset = 8
@@ -141,6 +144,7 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_51evb")
+metadata/_edit_lock_ = true
 
 [node name="ChargeMeter" type="ProgressBar" parent="ChargeMeterOutline"]
 layout_mode = 1
@@ -161,7 +165,26 @@ step = 0.0
 value = 0.5
 show_percentage = false
 
-[node name="Shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_dqxqp")
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 8
+metadata/_edit_lock_ = true
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_l3wbb")
+
+[node name="LevelAreaDetector" parent="." instance=ExtResource("5_e3s28")]
+
+[node name="LevelAreaDetector2" parent="." instance=ExtResource("5_e3s28")]
+position = Vector2(6, -6)
+
+[node name="LevelAreaDetector3" parent="." instance=ExtResource("5_e3s28")]
+position = Vector2(6, 6)
+
+[node name="LevelAreaDetector4" parent="." instance=ExtResource("5_e3s28")]
+position = Vector2(-6, 6)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="exited_level" from="LevelAreaDetector" to="." method="_on_level_area_detector_exited_level"]
+[connection signal="exited_level" from="LevelAreaDetector2" to="." method="_on_level_area_detector_exited_level"]
+[connection signal="exited_level" from="LevelAreaDetector3" to="." method="_on_level_area_detector_exited_level"]
+[connection signal="exited_level" from="LevelAreaDetector4" to="." method="_on_level_area_detector_exited_level"]

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 class_name Player
 
 @export var sprite: Node2D
@@ -29,6 +29,7 @@ var smoke_wait_time := 0.0
 func _ready() -> void:
 	boost_animation_player.play("idle")
 	boost_animation_player.animation_set_next("boost", "idle")
+	
 	charge_meter.get_parent().modulate.a = 0
 
 func charge_by(delta: float) -> void:
@@ -86,38 +87,39 @@ func _process(delta: float) -> void:
 		smoke.global_position = smoke_spawn_marker.global_position
 		get_parent().get_child(get_index() - 1).add_child(smoke)
 
-func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerKiller"):
-		var explosion := preload("res://explosion.tscn").instantiate() as Node2D
-		explosion.global_position = global_position
-		get_parent().add_child(explosion)
-		
-		set_process.call_deferred(false)
-		visible = false
-		
-		await get_tree().create_timer(0.5).timeout
-		
-		set_process(true)
-		visible = true
-		
-		camera.position = global_position
-		camera.rotation = global_rotation
-		
-		global_position = Vector2.ZERO
-		rotation = 0
-		speed = 0
-		movement_angle = 0
-		facing_angle = 0
-		turning = 0
-		charge_amount = 0
-
-		var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
-		tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
-		tween.tween_property(camera, "rotation", 0, 0.3)
-
+func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("LevelComplete"):
 		var warp_effect := preload("res://warp_effect.tscn").instantiate() as Node2D
 		set_process.call_deferred(false)
 		add_child(warp_effect)
 		sprite.visible = false
 		level_completed.emit()
+
+func _on_level_area_detector_exited_level() -> void:
+	var explosion := preload("res://explosion.tscn").instantiate() as Node2D
+	explosion.global_position = global_position
+	get_parent().add_child(explosion)
+	
+	set_process.call_deferred(false)
+	visible = false
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	set_process(true)
+	visible = true
+	
+	camera.position = global_position
+	camera.rotation = global_rotation
+	
+	global_position = Vector2.ZERO
+	rotation = 0
+	speed = 0
+	movement_angle = 0
+	facing_angle = 0
+	turning = 0
+	charge_amount = 0
+
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
+	tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
+	tween.tween_property(camera, "rotation", 0, 0.3)
+

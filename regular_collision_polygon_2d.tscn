@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://uof154pm5wte"]
+
+[ext_resource type="Script" path="res://regular_collision_polygon_2d.gd" id="1_wuq67"]
+
+[node name="RegularCollisionPolygon2D" type="CollisionPolygon2D"]
+polygon = PackedVector2Array(0, -100, 86.6025, -50, 86.6025, 50, -8.74228e-06, 100, -86.6025, 50, -86.6025, -50)
+script = ExtResource("1_wuq67")

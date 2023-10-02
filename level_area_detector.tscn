@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://m65yk53ryboh"]
+
+[ext_resource type="Script" path="res://level_area_detector.gd" id="1_bnrs8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqxqp"]
+radius = 1.0
+
+[node name="LevelAreaDetector" type="Area2D"]
+position = Vector2(-6, -6)
+collision_layer = 2
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_bnrs8")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dqxqp")
+metadata/_edit_lock_ = true
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

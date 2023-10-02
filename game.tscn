@@ -13,8 +13,12 @@ levels = NodePath("Levels")
 process_mode = 4
 visible = false
 
-[node name="straight" parent="Levels" instance=ExtResource("3_gsbho")]
-
-[node name="oneturn" parent="Levels" instance=ExtResource("4_dpifl")]
-
 [node name="snake" parent="Levels" instance=ExtResource("2_5atuh")]
+
+[node name="DisabledLevels" type="Node2D" parent="."]
+process_mode = 4
+visible = false
+
+[node name="straight" parent="DisabledLevels" instance=ExtResource("3_gsbho")]
+
+[node name="oneturn" parent="DisabledLevels" instance=ExtResource("4_dpifl")]
