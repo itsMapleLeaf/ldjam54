@@ -126,8 +126,14 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file(area.next_level)
+	
+	if area.is_in_group("LevelObstacle"):
+		_kill()
 
 func _on_level_area_detector_exited_level() -> void:
+	_kill()
+	
+func _kill():
 	var explosion := preload("res://explosion.tscn").instantiate() as Node2D
 	explosion.global_position = global_position
 	add_sibling(explosion)

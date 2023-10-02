@@ -14,8 +14,8 @@ todo:
 
 level ideas:
 - [x] multiple paths, one easy one difficult
-- [ ] a bunch of hard turns
-- [ ] straight with two moving level obstacles (which are the same color as the background) moving in opposite directions at a moderate speed
+- [x] a bunch of hard turns
+- [x] straight with two moving level obstacles (which are the same color as the background) moving in opposite directions at a moderate speed
 - [ ] straight with some moderate turns black holes at the sides
 - [ ] a long, narrow, slightly-curved level
 - [ ] big area with lots of moving obstacles all over the place moving at different speeds

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwmlmuknfu4kd"]
+
+[ext_resource type="Script" path="res://level_obstacle.gd" id="1_kv12e"]
+
+[node name="LevelObstacle" type="Area2D" groups=["LevelObstacle"]]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_kv12e")
+
+[node name="PolygonTemplate" type="Polygon2D" parent="."]
+visible = false
+color = Color(0.054902, 0.054902, 0.054902, 1)

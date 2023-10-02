@@ -14,6 +14,10 @@ config/name="ldjam54"
 run/main_scene="res://levels/straight.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 
+[autoload]
+
+LevelManager="*res://level_manager.tscn"
+
 [display]
 
 window/size/viewport_width=1600
@@ -70,6 +74,7 @@ reset={
 2d_physics/layer_2="PlayerLevelAreaDetector"
 2d_physics/layer_3="LevelArea"
 2d_physics/layer_4="Goal"
+2d_physics/layer_5="LevelObstacle"
 
 [rendering]
 
