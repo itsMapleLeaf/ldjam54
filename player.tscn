@@ -103,7 +103,7 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 [node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox", "results_screen", "results_title_label", "next_mission_button", "previous_mission_button", "completion_time_label", "results_completion_time_label")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
-camera = NodePath("Camera2D")
+camera = NodePath("CameraOffset/Camera2D")
 boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
 charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
 smoke_spawn_marker = NodePath("Marker2D")
@@ -138,7 +138,10 @@ texture = ExtResource("3_60lvt")
 position = Vector2(0, -4)
 texture = ExtResource("4_0grsm")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CameraOffset" type="Marker2D" parent="."]
+position = Vector2(0, -50)
+
+[node name="Camera2D" type="Camera2D" parent="CameraOffset"]
 ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
