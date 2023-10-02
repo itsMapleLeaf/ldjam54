@@ -3,11 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_8yauf"]
 [ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="1_djvd8"]
 [ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="2_qyguf"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_vlb5p"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3gjp"]
-size = Vector2(168.705, 218.561)
-
-[node name="oneturn" type="Node2D"]
+[node name="turns" type="Node2D"]
 
 [node name="LevelArea2" parent="." instance=ExtResource("1_8yauf")]
 
@@ -18,32 +16,43 @@ polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.388
 sides = 7
 
 [node name="RegularCollisionPolygon2D3" parent="LevelArea2" instance=ExtResource("1_djvd8")]
-position = Vector2(-15, -234)
+position = Vector2(-28.3232, -473.695)
+rotation = 1.42161
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D5" parent="LevelArea2" instance=ExtResource("1_djvd8")]
+position = Vector2(456, -567)
 rotation = 1.42161
 polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
 sides = 7
 
 [node name="RegularCollisionPolygon2D4" parent="LevelArea2" instance=ExtResource("1_djvd8")]
-position = Vector2(100, -288)
+position = Vector2(86.6768, -527.695)
 rotation = 1.42161
 scale = Vector2(1.15202, 1.20412)
 polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
 sides = 7
 
 [node name="RegularCollisionPolygon2D2" parent="LevelArea2" instance=ExtResource("1_djvd8")]
-position = Vector2(443, -330)
+position = Vector2(399.519, -1009.69)
 rotation = 2.29342
 polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
 sides = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea2"]
-position = Vector2(0.906557, -121.078)
-rotation = 0.175028
-shape = SubResource("RectangleShape2D_e3gjp")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea2"]
-position = Vector2(-311, -55.6948)
+position = Vector2(-324.323, -295.39)
 polygon = PackedVector2Array(432, -327, 583, -290.305, 731, -311, 729, -197, 567, -174.305, 421, -192)
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LevelArea2"]
+position = Vector2(20, 0)
+polygon = PackedVector2Array(-69, -477, -90, -354, -61, -202, -99, -26, 34, -23, 55, -192, 26, -322, 65, -437)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="LevelArea2"]
+polygon = PackedVector2Array(508, -639, 483, -753, 495, -902, 467, -972, 357, -955, 404, -860, 409, -732, 408, -626)
+
 [node name="Wormhole" parent="." instance=ExtResource("2_qyguf")]
-position = Vector2(443, -333)
+position = Vector2(399.519, -1012.69)
+next_level = "res://levels/snake.tscn"
+
+[node name="Player" parent="." instance=ExtResource("4_vlb5p")]

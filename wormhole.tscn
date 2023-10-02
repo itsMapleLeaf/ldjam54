@@ -1,6 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://bffyh0psdenmv"]
+[gd_scene load_steps=89 format=3 uid="uid://bffyh0psdenmv"]
 
 [ext_resource type="Texture2D" uid="uid://cvaa6xh66ehhp" path="res://resources/Planet_Galaxy_Big_Purple_Smooth_10x8.png" id="1_aqiii"]
+[ext_resource type="Script" path="res://wormhole.gd" id="1_nhj2s"]
 
 [sub_resource type="GDScript" id="GDScript_5sixk"]
 script/source = "@tool
@@ -548,6 +549,21 @@ func _ready() -> void:
 	play(\"default\")
 "
 
+[sub_resource type="Animation" id="Animation_54ct3"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
 [sub_resource type="Animation" id="Animation_yhr80"]
 resource_name = "default"
 loop_mode = 1
@@ -586,21 +602,6 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.309804), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_54ct3"]
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_srak8"]
 _data = {
 "RESET": SubResource("Animation_54ct3"),
@@ -613,6 +614,21 @@ script/source = "extends AnimationPlayer
 func _ready() -> void:
 	play(\"default\")
 "
+
+[sub_resource type="Animation" id="Animation_o2qyx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
 
 [sub_resource type="Animation" id="Animation_pd1nw"]
 resource_name = "default"
@@ -628,21 +644,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_o2qyx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.28319]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbeje"]
@@ -663,6 +664,7 @@ radius = 55.0
 
 [node name="Wormhole" type="Area2D" groups=["LevelComplete"]]
 collision_layer = 8
+script = ExtResource("1_nhj2s")
 
 [node name="Shade" type="Node2D" parent="."]
 script = SubResource("GDScript_5sixk")
@@ -672,7 +674,6 @@ shade_color = Color(0.0823529, 0.0745098, 0.121569, 1)
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_cmjl5")
 rotation = 6.28319
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_pofkq")
 frame_progress = 0.899533
 script = SubResource("GDScript_6d2b3")

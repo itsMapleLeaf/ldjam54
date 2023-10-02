@@ -7,8 +7,6 @@ class_name Player
 @export var charge_meter: ProgressBar
 @export var smoke_spawn_marker: Node2D
 
-signal level_completed
-
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
 const MAX_BOOST_STRENGTH := 600.0
@@ -26,6 +24,25 @@ var strafing := 0.0
 var charge_amount := 0.0
 var smoke_wait_time := 0.0
 
+func reset() -> void:
+	camera.position = global_position
+	camera.rotation = global_rotation
+	
+	global_position = Vector2.ZERO
+	rotation = 0
+	speed = 0
+	movement_angle = 0
+	facing_angle = 0
+	turning = 0
+	charge_amount = 0
+
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
+	tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
+	tween.tween_property(camera, "rotation", 0, 0.3)
+	
+	set_process(true)
+	visible = true
+
 func _ready() -> void:
 	boost_animation_player.play("idle")
 	boost_animation_player.animation_set_next("boost", "idle")
@@ -41,6 +58,14 @@ func boost() -> void:
 	charge_amount = 0
 	boost_animation_player.stop()
 	boost_animation_player.play("boost")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset"):
+		reset()
+		return
+		
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _process(delta: float) -> void:
 	# collect input
@@ -85,41 +110,31 @@ func _process(delta: float) -> void:
 		
 		var smoke := preload("res://smoke.tscn").instantiate() as Node2D
 		smoke.global_position = smoke_spawn_marker.global_position
-		get_parent().get_child(get_index() - 1).add_child(smoke)
+		get_parent().get_child(get_index() - 1).add_sibling(smoke)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("LevelComplete"):
+	if area is Wormhole:
 		var warp_effect := preload("res://warp_effect.tscn").instantiate() as Node2D
+		warp_effect.global_position = global_position
+		warp_effect.rotation = rotation
+		add_sibling(warp_effect)
+		
 		set_process.call_deferred(false)
-		add_child(warp_effect)
-		sprite.visible = false
-		level_completed.emit()
+		visible = false
+		
+		if not area.next_level: return
+		
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file(area.next_level)
 
 func _on_level_area_detector_exited_level() -> void:
 	var explosion := preload("res://explosion.tscn").instantiate() as Node2D
 	explosion.global_position = global_position
-	get_parent().add_child(explosion)
+	add_sibling(explosion)
 	
 	set_process.call_deferred(false)
 	visible = false
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	set_process(true)
-	visible = true
-	
-	camera.position = global_position
-	camera.rotation = global_rotation
-	
-	global_position = Vector2.ZERO
-	rotation = 0
-	speed = 0
-	movement_angle = 0
-	facing_angle = 0
-	turning = 0
-	charge_amount = 0
-
-	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
-	tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
-	tween.tween_property(camera, "rotation", 0, 0.3)
-
+	reset()

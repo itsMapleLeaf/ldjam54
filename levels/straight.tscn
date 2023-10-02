@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6adjxtij47fe"]
+[gd_scene load_steps=5 format=3 uid="uid://b6adjxtij47fe"]
 
 [ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_lcjjq"]
 [ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_g4hd8"]
 [ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="2_mig8h"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_nolcb"]
 
 [node name="straight" type="Node2D"]
 metadata/_edit_horizontal_guides_ = []
@@ -26,4 +27,7 @@ position = Vector2(-5, 0)
 polygon = PackedVector2Array(-35, -82, -61, -264, -25, -472, -27, -576, 59, -591, 69, -416, 41, -289, 51, -80)
 
 [node name="Wormhole" parent="." instance=ExtResource("2_mig8h")]
-position = Vector2(5.14142, -674.045)
+position = Vector2(-2, -669)
+next_level = "res://levels/turns.tscn"
+
+[node name="Player" parent="." instance=ExtResource("4_nolcb")]
