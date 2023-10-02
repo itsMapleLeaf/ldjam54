@@ -11,6 +11,8 @@ class_name Player
 @export var results_title_label: Label
 @export var next_mission_button: Button
 @export var previous_mission_button: Button
+@export var completion_time_label: Label
+@export var results_completion_time_label: Label
 
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
@@ -30,6 +32,8 @@ var strafing := 0.0
 var charging := false
 var charge_amount := 0.0
 var smoke_wait_time := 0.0
+var completion_time := 0.0
+var running_completion_time := false
 
 # this really shouldn't be here, but game jam code LOL
 var levels := [
@@ -73,6 +77,8 @@ func reset() -> void:
 	strafing = 0
 	charging = false
 	charge_amount = 0
+	completion_time = 0
+	running_completion_time = false
 
 	var tween := create_tween().set_ease(Tween.EASE_OUT).set_parallel()
 	tween.tween_property(camera, "position", Vector2.ZERO, 0.3)
@@ -85,6 +91,7 @@ func _ready() -> void:
 	boost_animation_player.play("idle")
 	boost_animation_player.animation_set_next("boost", "idle")
 	charge_meter.get_parent().modulate.a = 0
+	results_screen.hide()
 
 func charge_by(delta: float) -> void:
 	charge_amount = minf(charge_amount + delta / CHARGE_TIME, 1)
@@ -166,6 +173,13 @@ func _process(delta: float) -> void:
 		var smoke := preload("res://smoke.tscn").instantiate() as Node2D
 		smoke.global_position = smoke_spawn_marker.global_position
 		get_parent().get_child(get_index() - 1).add_sibling(smoke)
+		
+	# update completion time - only start counting when player starts moving
+	if speed > 0 or turning != 0 or strafing != 0:
+		running_completion_time = true
+	if running_completion_time:
+		completion_time += delta
+	completion_time_label.text = "%.2f" % completion_time
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("LevelComplete"):
@@ -202,6 +216,8 @@ func _show_results():
 	
 	results_title_label.text = "OBJECTIVE %s COMPLETE" % (current_level_index + 1)
 	results_screen.show()
+	
+	results_completion_time_label.text = "TIME: %.2f" % completion_time
 	
 	if next_level_index == 0:
 		next_mission_button.text = "RETURN TO FIRST MISSION"

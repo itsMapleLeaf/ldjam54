@@ -100,7 +100,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.8, 0.8, 0.8, 0)
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox", "results_screen", "results_title_label", "next_mission_button", "previous_mission_button")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox", "results_screen", "results_title_label", "next_mission_button", "previous_mission_button", "completion_time_label", "results_completion_time_label")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
 camera = NodePath("Camera2D")
@@ -112,6 +112,8 @@ results_screen = NodePath("ResultsScreen")
 results_title_label = NodePath("ResultsScreen/Panel/VBoxContainer/Title")
 next_mission_button = NodePath("ResultsScreen/Panel/VBoxContainer/Next")
 previous_mission_button = NodePath("ResultsScreen/Panel/VBoxContainer/Previous")
+completion_time_label = NodePath("UI/CompletionTime")
+results_completion_time_label = NodePath("ResultsScreen/Panel/VBoxContainer/FinalCompletionTime")
 
 [node name="Sprites" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -200,8 +202,24 @@ position = Vector2(6, 6)
 [node name="LevelAreaDetector4" parent="." instance=ExtResource("5_e3s28")]
 position = Vector2(-6, 6)
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="CompletionTime" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 18.0
+offset_right = 42.0
+offset_bottom = 56.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 25
+text = "TIME: 0.00"
+horizontal_alignment = 1
+
 [node name="ResultsScreen" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Panel" type="Panel" parent="ResultsScreen"]
 anchors_preset = 15
@@ -231,6 +249,14 @@ size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("6_lvvfg")
 theme_override_font_sizes/font_size = 50
 text = "OBJECTIVE COMPLETE"
+
+[node name="FinalCompletionTime" type="Label" parent="ResultsScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 25
+text = "TIME: 0.00"
+horizontal_alignment = 1
 
 [node name="Next" type="Button" parent="ResultsScreen/Panel/VBoxContainer"]
 layout_mode = 2
