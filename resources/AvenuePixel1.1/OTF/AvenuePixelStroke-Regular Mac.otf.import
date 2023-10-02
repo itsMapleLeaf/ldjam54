@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bwjod6nwn8r57"
+path="res://.godot/imported/AvenuePixelStroke-Regular Mac.otf-f6384eb81f90608e787c55bb191715cc.fontdata"
+
+[deps]
+
+source_file="res://resources/AvenuePixel1.1/OTF/AvenuePixelStroke-Regular Mac.otf"
+dest_files=["res://.godot/imported/AvenuePixelStroke-Regular Mac.otf-f6384eb81f90608e787c55bb191715cc.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

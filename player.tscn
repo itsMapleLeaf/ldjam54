@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://e6qi38y4o5q7"]
+[gd_scene load_steps=17 format=3 uid="uid://e6qi38y4o5q7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tij7q"]
 [ext_resource type="Texture2D" uid="uid://iv3xi3osmeju" path="res://resources/Main Ship - Engines - Supercharged Engine - Spritesheet.png" id="2_5k3em"]
 [ext_resource type="Texture2D" uid="uid://d12a2qkk4tjnq" path="res://resources/Main Ship - Engines - Supercharged Engine.png" id="3_60lvt"]
 [ext_resource type="Texture2D" uid="uid://43nhsujsyjxy" path="res://resources/Main Ship - Base - Slight damage.png" id="4_0grsm"]
 [ext_resource type="PackedScene" uid="uid://m65yk53ryboh" path="res://level_area_detector.tscn" id="5_e3s28"]
+[ext_resource type="FontFile" uid="uid://biwlw21erfpj8" path="res://resources/AvenuePixel1.1/TTF/AvenuePixel-Regular.ttf" id="6_lvvfg"]
 
 [sub_resource type="Animation" id="Animation_bhac3"]
 length = 0.001
@@ -88,7 +89,18 @@ anti_aliasing = false
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3wbb"]
 radius = 9.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sruta"]
+bg_color = Color(0, 0, 0, 0.576471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_338ve"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox", "results_screen", "results_title_label", "next_mission_button", "previous_mission_button")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
 camera = NodePath("Camera2D")
@@ -96,6 +108,10 @@ boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
 charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
 smoke_spawn_marker = NodePath("Marker2D")
 hitbox = NodePath("Hitbox")
+results_screen = NodePath("ResultsScreen")
+results_title_label = NodePath("ResultsScreen/Panel/VBoxContainer/Title")
+next_mission_button = NodePath("ResultsScreen/Panel/VBoxContainer/Next")
+previous_mission_button = NodePath("ResultsScreen/Panel/VBoxContainer/Previous")
 
 [node name="Sprites" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -184,35 +200,82 @@ position = Vector2(6, 6)
 [node name="LevelAreaDetector4" parent="." instance=ExtResource("5_e3s28")]
 position = Vector2(-6, 6)
 
-[node name="EndScreen" type="CanvasLayer" parent="."]
+[node name="ResultsScreen" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EndScreen"]
+[node name="Panel" type="Panel" parent="ResultsScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sruta")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultsScreen/Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -130.0
+offset_top = -85.0
+offset_right = 130.0
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="EndScreen/VBoxContainer"]
+[node name="Title" type="Label" parent="ResultsScreen/Panel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "wowee!! you did it!!"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 50
+text = "OBJECTIVE COMPLETE"
 
-[node name="Label2" type="Label" parent="EndScreen/VBoxContainer"]
+[node name="Next" type="Button" parent="ResultsScreen/Panel/VBoxContainer"]
 layout_mode = 2
-text = "hope that wasn't too painful :)"
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_hover_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_colors/font_focus_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_338ve")
+text = "NEXT MISSION"
+flat = true
+
+[node name="Retry" type="Button" parent="ResultsScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_hover_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_colors/font_focus_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_338ve")
+text = "RETRY MISSION"
+flat = true
+
+[node name="Previous" type="Button" parent="ResultsScreen/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_colors/font_hover_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_colors/font_focus_color = Color(0.309804, 0.631373, 1, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("6_lvvfg")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxFlat_338ve")
+text = "PREVIOUS MISSION"
+flat = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="exited_level" from="LevelAreaDetector" to="." method="_on_level_area_detector_exited_level"]
 [connection signal="exited_level" from="LevelAreaDetector2" to="." method="_on_level_area_detector_exited_level"]
 [connection signal="exited_level" from="LevelAreaDetector3" to="." method="_on_level_area_detector_exited_level"]
 [connection signal="exited_level" from="LevelAreaDetector4" to="." method="_on_level_area_detector_exited_level"]
+[connection signal="pressed" from="ResultsScreen/Panel/VBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="ResultsScreen/Panel/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="ResultsScreen/Panel/VBoxContainer/Previous" to="." method="_on_previous_pressed"]
