@@ -88,13 +88,14 @@ anti_aliasing = false
 [sub_resource type="CircleShape2D" id="CircleShape2D_l3wbb"]
 radius = 9.0
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
 camera = NodePath("Camera2D")
 boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
 charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
 smoke_spawn_marker = NodePath("Marker2D")
+hitbox = NodePath("Hitbox")
 
 [node name="Sprites" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -122,7 +123,7 @@ texture = ExtResource("4_0grsm")
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+position_smoothing_speed = 20.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
 metadata/_edit_lock_ = true
@@ -166,7 +167,7 @@ value = 0.5
 show_percentage = false
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_mask = 24
+collision_mask = 56
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

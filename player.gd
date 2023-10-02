@@ -6,15 +6,17 @@ class_name Player
 @export var boost_animation_player: AnimationPlayer
 @export var charge_meter: ProgressBar
 @export var smoke_spawn_marker: Node2D
+@export var hitbox: Area2D
 
 const TURN_SPEED := 3.0
 const MIN_BOOST_STRENGTH := 100.0
 const MAX_BOOST_STRENGTH := 600.0
-const DRAG := 30.0
+const DRAG := 0.0
 const CHARGE_TIME := 0.5
 const STRAFE_SPEED := 200.0
 const STRAFE_ROTATION := 0.4
 const STRAFE_ROTATION_SPEED := 10.0
+const GRAVITY_PIT_STRENGTH := 200.0
 
 var speed := 0.0
 var movement_angle := 0.0
@@ -86,6 +88,23 @@ func _process(delta: float) -> void:
 	
 	# apply movement from strafing
 	global_position += Vector2.RIGHT.rotated(facing_angle) * strafing * STRAFE_SPEED * delta
+	
+	# apply gravity pit attraction
+	var gravity_pit = hitbox.get_overlapping_areas().filter(
+		func (area: Area2D): return area.is_in_group("GravityPit")
+	).reduce(func (closest: Area2D, next: Area2D):
+		var next_distance := next.global_position.distance_to(global_position)
+		var closest_distance = closest.global_position.distance_to(global_position)
+		if next_distance < closest_distance:
+			return next
+		else:
+			return closest
+	)
+	
+	if gravity_pit is Area2D:
+		global_position = global_position.move_toward(
+			gravity_pit.global_position, delta * GRAVITY_PIT_STRENGTH
+		)
 	
 	# apply facing angle
 	rotation = facing_angle

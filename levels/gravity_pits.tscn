@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://2hmift13bcre"]
+
+[ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_huibc"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_mnj7y"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="3_t4n3p"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_8m62i"]
+[ext_resource type="PackedScene" uid="uid://bcqlficr47ppt" path="res://gravity_pit.tscn" id="5_gdf3r"]
+
+[node name="Level" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="LevelArea" parent="." instance=ExtResource("1_huibc")]
+position = Vector2(0, -1)
+rotation = 0.246512
+
+[node name="RegularCollisionPolygon2D" parent="LevelArea" instance=ExtResource("2_mnj7y")]
+position = Vector2(-2.14291, 2.75299)
+rotation = 1.62845
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D2" parent="LevelArea" instance=ExtResource("2_mnj7y")]
+position = Vector2(665.945, -1563.4)
+rotation = 1.92724
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
+position = Vector2(-80.3639, -347.922)
+polygon = PackedVector2Array(39.2947, 295.355, 39.5552, 148.863, 84.9826, 38.4392, 62.3934, -141.488, -20.8095, -308.225, -80.2942, -507.741, -123, -582, -126, -703, -112, -775, -51, -770, -22, -730, 34, -701, 109.514, -718.247, 140, -754, 137, -807, 256, -799, 391, -844, 539, -869, 621.522, -878.199, 712.192, -903.077, 742.648, -970.549, 660, -1195, 810, -1173, 904.156, -984.378, 945, -891, 958, -800, 914, -711, 781, -694, 714, -734, 646, -701, 633, -650, 560, -646, 475, -663, 381.76, -650.818, 218.144, -587.993, 127.024, -540.316, 102.856, -484.738, 118.023, -399.874, 175.305, -213.209, 193.54, -25.9992, 172.733, 165.878, 154.548, 327.193)
+
+[node name="Wormhole" parent="." instance=ExtResource("3_t4n3p")]
+position = Vector2(1021, -1358)
+rotation = 0.246512
+
+[node name="Player" parent="." instance=ExtResource("4_8m62i")]
+
+[node name="GravityPit" parent="." instance=ExtResource("5_gdf3r")]
+position = Vector2(241, -1076)
+
+[node name="GravityPit2" parent="." instance=ExtResource("5_gdf3r")]
+position = Vector2(856.706, -842.764)

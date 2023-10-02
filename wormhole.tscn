@@ -2,24 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cvaa6xh66ehhp" path="res://resources/Planet_Galaxy_Big_Purple_Smooth_10x8.png" id="1_aqiii"]
 [ext_resource type="Script" path="res://wormhole.gd" id="1_nhj2s"]
-
-[sub_resource type="GDScript" id="GDScript_5sixk"]
-script/source = "@tool
-extends Node2D
-
-@export_range(1, 1000, 1) var shade_size := 150:
-	set(new_shade_size):
-		shade_size = new_shade_size
-		queue_redraw()
-
-@export var shade_color := Color.from_string(\"#11101a\", Color.BLACK):
-	set(value):
-		shade_color = value
-		queue_redraw()
-
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, shade_size, shade_color)
-"
+[ext_resource type="PackedScene" uid="uid://bja8ij71d8hnq" path="res://circle_2d.tscn" id="2_1iri1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmjl5"]
 
@@ -570,7 +553,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Shade:scale:x")
+tracks/0/path = NodePath("Circle2D:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -581,7 +564,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Shade:scale:y")
+tracks/1/path = NodePath("Circle2D:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -592,7 +575,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Shade:modulate")
+tracks/2/path = NodePath("Circle2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -666,10 +649,7 @@ radius = 55.0
 collision_layer = 8
 script = ExtResource("1_nhj2s")
 
-[node name="Shade" type="Node2D" parent="."]
-script = SubResource("GDScript_5sixk")
-shade_size = 56
-shade_color = Color(0.0823529, 0.0745098, 0.121569, 1)
+[node name="Circle2D" parent="." instance=ExtResource("2_1iri1")]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_cmjl5")

@@ -35,17 +35,14 @@ sides = 7
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
 polygon = PackedVector2Array(-51, -52, -61, -216, -262, -473, -277, -800, -107, -930, -64, -1080, 37, -1074, 97, -936, 255, -805, 276, -511, 94, -229, 57, -41)
 
-[node name="Wormhole" parent="." instance=ExtResource("3_npibn")]
-position = Vector2(-15.6906, -1146.48)
-
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(32, -373)
 rotation = -0.00355944
 curve = SubResource("Curve2D_3fsal")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(291.856, 14.863)
-progress = 1.10645
+position = Vector2(-31.4359, -277.503)
+progress = 480.247
 rotates = false
 cubic_interp = false
 script = ExtResource("5_plt10")
@@ -53,7 +50,7 @@ follow_speed_pixels = 635.0
 
 [node name="Rotation" type="Node2D" parent="Path2D/PathFollow2D"]
 position = Vector2(0, 5)
-rotation = 783.972
+rotation = 52.2001
 script = ExtResource("5_i31n3")
 speed = 2.835
 
@@ -70,8 +67,8 @@ rotation = 3.14159
 curve = SubResource("Curve2D_3fsal")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(-31.7664, -248.383)
-progress = 451.106
+position = Vector2(298.245, -534.384)
+progress = 930.247
 rotates = false
 cubic_interp = false
 script = ExtResource("5_plt10")
@@ -80,7 +77,7 @@ offset_pixels = 450.0
 
 [node name="Rotation" type="Node2D" parent="Path2D2/PathFollow2D"]
 position = Vector2(0, 5)
-rotation = 783.972
+rotation = 52.2001
 script = ExtResource("5_i31n3")
 speed = 2.835
 
@@ -90,5 +87,9 @@ speed = 2.835
 polygon = PackedVector2Array(0, -75, 64.9519, -37.5, 64.9519, 37.5, -6.55671e-06, 75, -64.9519, 37.5, -64.9519, -37.5)
 radius = 75.0
 metadata/_edit_lock_ = true
+
+[node name="Wormhole" parent="." instance=ExtResource("3_npibn")]
+position = Vector2(-15.6906, -1146.48)
+next_level = "res://levels/gravity_pits.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_frwme")]
