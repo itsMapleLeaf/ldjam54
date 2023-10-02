@@ -3,6 +3,7 @@ todo:
 - [x] show completion time
 - [x] screen shake
 - [ ] sound effects
+- sum of best times on last level (?)
 - tutorial hints for first three levels
 - time limit (?)
 - level list screen
