@@ -175,7 +175,7 @@ func _process(delta: float) -> void:
 		get_parent().get_child(get_index() - 1).add_sibling(smoke)
 		
 	# update completion time - only start counting when player starts moving
-	if speed > 0 or turning != 0 or strafing != 0:
+	if speed > 0 or strafing != 0:
 		running_completion_time = true
 	if running_completion_time:
 		completion_time += delta
