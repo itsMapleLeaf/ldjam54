@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpe6o88vw2nth"]
+
+[ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_0is05"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_3atsg"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="3_hktxm"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_pa42w"]
+
+[node name="Level" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="LevelArea" parent="." instance=ExtResource("1_0is05")]
+position = Vector2(0, -1)
+rotation = 0.246512
+
+[node name="RegularCollisionPolygon2D" parent="LevelArea" instance=ExtResource("2_3atsg")]
+position = Vector2(-2.14291, 2.75299)
+rotation = 1.62845
+scale = Vector2(1.29685, 1.29685)
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D2" parent="LevelArea" instance=ExtResource("2_3atsg")]
+position = Vector2(-2003.89, -114.554)
+rotation = 1.92724
+scale = Vector2(1.42851, 1.42851)
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
+position = Vector2(-80.3639, -347.922)
+polygon = PackedVector2Array(-7.88512, 370.128, -47.6507, 60.4707, -170.734, -174.6, -303.747, -399.955, -494.1, -533.543, -729.731, -617.584, -962.039, -590.064, -1253.19, -501.334, -1602.13, -298.039, -1789.73, -64.1895, -1844.36, 218.691, -2011.2, 231.801, -1910.43, -166.84, -1678, -431.56, -1436.66, -574.784, -1147.72, -680.487, -894.595, -735.931, -651.081, -731.211, -445.789, -661.191, -206.89, -502.696, -7.56906, -214.626, 113.664, 78.6561, 166.455, 341.727)
+
+[node name="Wormhole" parent="." instance=ExtResource("3_hktxm")]
+position = Vector2(-1917, -594)
+rotation = 0.246512
+
+[node name="Player" parent="." instance=ExtResource("4_pa42w")]

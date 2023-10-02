@@ -32,6 +32,7 @@ polygon = PackedVector2Array(39.2947, 295.355, 39.5552, 148.863, 84.9826, 38.439
 [node name="Wormhole" parent="." instance=ExtResource("3_t4n3p")]
 position = Vector2(1021, -1358)
 rotation = 0.246512
+next_level = "res://levels/big_curve.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_8m62i")]
 
