@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://yyxy58spak6f"]
+
+[ext_resource type="PackedScene" uid="uid://3iwnktuef6o7" path="res://level_area.tscn" id="1_o2s88"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="2_l812c"]
+[ext_resource type="PackedScene" uid="uid://dgq48q8e8tai0" path="res://hell_cluster.tscn" id="3_d2yit"]
+[ext_resource type="PackedScene" uid="uid://bffyh0psdenmv" path="res://wormhole.tscn" id="3_ryxrj"]
+[ext_resource type="PackedScene" uid="uid://e6qi38y4o5q7" path="res://player.tscn" id="4_ki28h"]
+
+[node name="Level" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="LevelArea" parent="." instance=ExtResource("1_o2s88")]
+position = Vector2(0, -1)
+rotation = 0.246512
+
+[node name="RegularCollisionPolygon2D" parent="LevelArea" instance=ExtResource("2_l812c")]
+position = Vector2(-2.14291, 2.75299)
+rotation = 2.01333
+scale = Vector2(1.00707, 1.00707)
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="RegularCollisionPolygon2D3" parent="LevelArea" instance=ExtResource("2_l812c")]
+position = Vector2(-393.721, -372.174)
+rotation = 1.34717
+scale = Vector2(3.10274, 3.10274)
+polygon = PackedVector2Array(0, -100, 86.6025, -50, 86.6025, 50, -8.74228e-06, 100, -86.6025, 50, -86.6025, -50)
+
+[node name="RegularCollisionPolygon2D4" parent="LevelArea" instance=ExtResource("2_l812c")]
+position = Vector2(140.458, -929.371)
+rotation = 3.61643
+scale = Vector2(3.10274, 3.10274)
+polygon = PackedVector2Array(0, -100, 86.6025, -50, 86.6025, 50, -8.74228e-06, 100, -86.6025, 50, -86.6025, -50)
+
+[node name="RegularCollisionPolygon2D5" parent="LevelArea" instance=ExtResource("2_l812c")]
+position = Vector2(-534.277, -1246.3)
+rotation = 3.61643
+scale = Vector2(3.10274, 3.10274)
+polygon = PackedVector2Array(0, -100, 86.6025, -50, 86.6025, 50, -8.74228e-06, 100, -86.6025, 50, -86.6025, -50)
+
+[node name="RegularCollisionPolygon2D2" parent="LevelArea" instance=ExtResource("2_l812c")]
+position = Vector2(-945.365, -1871.9)
+rotation = 1.92724
+scale = Vector2(1.42851, 1.42851)
+polygon = PackedVector2Array(0, -100, 78.1832, -62.349, 97.4928, 22.2521, 43.3884, 90.0969, -43.3884, 90.0969, -97.4928, 22.2521, -78.1832, -62.349)
+sides = 7
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelArea"]
+polygon = PackedVector2Array(46.7044, -68.4667, -139.059, -372.322, -481.334, -93.3659, -384.069, -87.9367, -218.901, -87.2198, -58.8487, 57.0862)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="LevelArea"]
+polygon = PackedVector2Array(-44.545, -1053.99, -53.2211, -1334.35, -259.693, -1224.65, -497.574, -1510.24, -220.451, -1572.75, 50.4089, -1606.88, 218.087, -1551.11, 271.088, -1467.52, 303.787, -1337.57, 334.216, -1105.99)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="LevelArea"]
+polygon = PackedVector2Array(-749.497, -1146.77, -998.292, -1274.94, -1217.86, -1323.83, -1270.65, -1427.07, -1232.85, -1604.67, -1074, -1772.5, -1041.9, -1874.42, -831.306, -1828.42, -900.683, -1677.94, -1040.4, -1528.32, -830.17, -1561.63, -650.36, -1502.73)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="LevelArea"]
+polygon = PackedVector2Array(-423.713, -634.794, -364.509, -776.526, -258.956, -902.079, -105.34, -1000.54, 25.1406, -686.9, -108.808, -731.564, -166.981, -708.676, -184.491, -581.561, -151.428, -372.303)
+
+[node name="HellCluster" parent="." instance=ExtResource("3_d2yit")]
+position = Vector2(-299, -459)
+rotation = 2.00163
+scale = Vector2(1.09, 1.09)
+
+[node name="HellCluster2" parent="." instance=ExtResource("3_d2yit")]
+position = Vector2(363, -849)
+rotation = 1.66536
+scale = Vector2(1.09, 1.09)
+
+[node name="HellCluster3" parent="." instance=ExtResource("3_d2yit")]
+position = Vector2(-214, -1347)
+rotation = 0.483418
+scale = Vector2(1.09, 1.09)
+
+[node name="Wormhole" parent="." instance=ExtResource("3_ryxrj")]
+position = Vector2(-459, -2053)
+rotation = 0.246512
+
+[node name="Player" parent="." instance=ExtResource("4_ki28h")]

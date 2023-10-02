@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0sjenyfq5oba"]
+
+[ext_resource type="Script" path="res://path_follow.gd" id="1_4e0he"]
+[ext_resource type="Script" path="res://rotation.gd" id="2_tyfc6"]
+[ext_resource type="PackedScene" uid="uid://dwmlmuknfu4kd" path="res://level_obstacle.tscn" id="3_leue4"]
+[ext_resource type="PackedScene" uid="uid://uof154pm5wte" path="res://regular_collision_polygon_2d.tscn" id="4_27fh2"]
+
+[sub_resource type="Curve2D" id="Curve2D_ervwh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -551, -144, -188.317, 53.1019, 188.317, -53.1019, -231.33, -422.513, 0, 0, 0, 0, 102, -383)
+}
+point_count = 3
+
+[node name="HellClusterObstacle" type="Path2D"]
+position = Vector2(242, 298)
+curve = SubResource("Curve2D_ervwh")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(83.2815, -393.281)
+rotation = -0.523823
+progress = 756.078
+rotates = false
+cubic_interp = false
+script = ExtResource("1_4e0he")
+follow_speed_pixels = 310.0
+
+[node name="Rotation" type="Node2D" parent="PathFollow2D"]
+rotation = -132.305
+script = ExtResource("2_tyfc6")
+speed = -2.64
+
+[node name="LevelObstacle" parent="PathFollow2D/Rotation" instance=ExtResource("3_leue4")]
+
+[node name="RegularCollisionPolygon2D" parent="PathFollow2D/Rotation/LevelObstacle" instance=ExtResource("4_27fh2")]
+polygon = PackedVector2Array(0, -40, 34.641, -20, 34.641, 20, -3.49691e-06, 40, -34.641, 20, -34.641, -20)
+radius = 40.0
+
+[node name="_Timer_75970" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="_Timer_123160" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true

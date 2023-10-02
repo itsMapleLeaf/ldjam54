@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgq48q8e8tai0"]
+
+[ext_resource type="PackedScene" uid="uid://c0sjenyfq5oba" path="res://hell_cluster_obstacle.tscn" id="1_75cer"]
+
+[node name="HellCluster" type="Node2D"]
+
+[node name="Path2D" parent="." instance=ExtResource("1_75cer")]
+position = Vector2(255.713, 384.906)
+scale = Vector2(1.035, 1.035)
+
+[node name="PathFollow2D" parent="Path2D" index="0"]
+position = Vector2(-528.01, -179.36)
+progress = 42.1846
+offset_pixels = 585.0
+
+[node name="Rotation" parent="Path2D/PathFollow2D" index="0"]
+rotation = -21.9392
+
+[node name="Path2D2" parent="." instance=ExtResource("1_75cer")]
+position = Vector2(-469.287, 31.9064)
+rotation = 2.0944
+scale = Vector2(1.035, 1.035)
+
+[node name="PathFollow2D" parent="Path2D2" index="0"]
+position = Vector2(-401.368, -323.661)
+progress = 234.626
+
+[node name="Rotation" parent="Path2D2/PathFollow2D" index="0"]
+rotation = -21.9392
+
+[node name="Path2D3" parent="." instance=ExtResource("1_75cer")]
+position = Vector2(230.713, -400.094)
+rotation = 4.18879
+scale = Vector2(1.035, 1.035)
+
+[node name="PathFollow2D" parent="Path2D3" index="0"]
+position = Vector2(-101.177, -438.777)
+progress = 564.626
+offset_pixels = 330.0
+
+[node name="Rotation" parent="Path2D3/PathFollow2D" index="0"]
+rotation = -21.9392
+
+[editable path="Path2D"]
+[editable path="Path2D2"]
+[editable path="Path2D3"]
