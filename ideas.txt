@@ -1,7 +1,7 @@
 todo:
 - [x] results screen: let player go to next or retry
 - [x] show completion time
-- [ ] screen shake
+- [x] screen shake
 - [ ] sound effects
 - tutorial hints for first three levels
 - time limit (?)

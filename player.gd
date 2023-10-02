@@ -99,8 +99,11 @@ func charge_by(delta: float) -> void:
 func boost() -> void:
 	if not charging: return
 	charging = false
+	
 	speed = lerpf(MIN_BOOST_STRENGTH, MAX_BOOST_STRENGTH, charge_amount)
 	movement_angle = facing_angle
+	$Shaker.shake(max(3 * charge_amount, 1), 0.2)
+	
 	charge_amount = 0
 	boost_animation_player.stop()
 	boost_animation_player.play("boost")
@@ -206,6 +209,8 @@ func _kill():
 	
 	set_process.call_deferred(false)
 	visible = false
+	
+	$Shaker.shake(16, 0.2)
 	
 	await get_tree().create_timer(0.5).timeout
 	

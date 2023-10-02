@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://e6qi38y4o5q7"]
+[gd_scene load_steps=18 format=3 uid="uid://e6qi38y4o5q7"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_tij7q"]
 [ext_resource type="Texture2D" uid="uid://iv3xi3osmeju" path="res://resources/Main Ship - Engines - Supercharged Engine - Spritesheet.png" id="2_5k3em"]
@@ -62,6 +62,24 @@ _data = {
 "idle": SubResource("Animation_w7e6m")
 }
 
+[sub_resource type="GDScript" id="GDScript_uuxst"]
+script/source = "extends Node2D
+
+@export var camera: Camera2D
+
+var intensity := 0.0
+var current_tween: Tween
+
+func shake(amount: float, duration: float):
+	if current_tween: current_tween.stop()
+	intensity = amount
+	current_tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
+	current_tween.tween_property(self, \"intensity\", 0, duration)
+	
+func _process(delta: float) -> void:
+	camera.offset = Vector2.UP.rotated(randf_range(0, PI * 2)) * intensity
+"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51evb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 1
@@ -103,10 +121,10 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 [node name="Player" type="Node2D" node_paths=PackedStringArray("sprite", "camera", "boost_animation_player", "charge_meter", "smoke_spawn_marker", "hitbox", "results_screen", "results_title_label", "next_mission_button", "previous_mission_button", "completion_time_label", "results_completion_time_label")]
 script = ExtResource("1_tij7q")
 sprite = NodePath("Sprites")
-camera = NodePath("CameraOffset/Camera2D")
+camera = NodePath("Shaker/CameraOffset/Camera2D")
 boost_animation_player = NodePath("Sprites/Boost/AnimationPlayer")
 charge_meter = NodePath("ChargeMeterOutline/ChargeMeter")
-smoke_spawn_marker = NodePath("Marker2D")
+smoke_spawn_marker = NodePath("SmokePosition")
 hitbox = NodePath("Hitbox")
 results_screen = NodePath("ResultsScreen")
 results_title_label = NodePath("ResultsScreen/Panel/VBoxContainer/Title")
@@ -138,19 +156,23 @@ texture = ExtResource("3_60lvt")
 position = Vector2(0, -4)
 texture = ExtResource("4_0grsm")
 
-[node name="CameraOffset" type="Marker2D" parent="."]
+[node name="SmokePosition" type="Marker2D" parent="."]
+position = Vector2(0, 11)
+metadata/_edit_lock_ = true
+
+[node name="Shaker" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+script = SubResource("GDScript_uuxst")
+camera = NodePath("CameraOffset/Camera2D")
+
+[node name="CameraOffset" type="Marker2D" parent="Shaker"]
 position = Vector2(0, -50)
 
-[node name="Camera2D" type="Camera2D" parent="CameraOffset"]
+[node name="Camera2D" type="Camera2D" parent="Shaker/CameraOffset"]
 ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 20.0
 rotation_smoothing_enabled = true
 rotation_smoothing_speed = 7.0
-metadata/_edit_lock_ = true
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, 11)
 metadata/_edit_lock_ = true
 
 [node name="ChargeMeterOutline" type="Panel" parent="."]
