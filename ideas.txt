@@ -3,13 +3,17 @@ todo:
 - [x] show completion time
 - [x] screen shake
 - [x] sound effects
-- sum of best times on last level (?)
-- tutorial hints for first three levels
-- time limit (?)
-- level list screen
-- rankings
-- fade transition between levels
-- speedometer
+
+post-jam:
+- [ ] sum of best times on last level (?)
+- [ ] tutorial hints for first three levels
+- [ ] time limit (?)
+- [ ] level list screen
+- [ ] rankings
+- [ ] fade transition between levels
+- [ ] speedometer
+- [ ] an arrow which shows the absolute direction that you're pointing (only show while boosting?)
+- [ ] consistent graphical style
 
 level ideas:
 - [x] multiple paths, one easy one difficult
