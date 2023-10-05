@@ -14,6 +14,7 @@ post-jam:
 - [ ] speedometer
 - [ ] an arrow which shows the absolute direction that you're pointing (only show while boosting?)
 - [ ] consistent graphical style
+- [ ] a toggle for camera rotation
 
 level ideas:
 - [x] multiple paths, one easy one difficult
