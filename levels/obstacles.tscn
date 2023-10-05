@@ -41,16 +41,16 @@ rotation = -0.00355944
 curve = SubResource("Curve2D_3fsal")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-31.4359, -277.503)
-progress = 480.247
+position = Vector2(19.9404, -400.002)
+progress = 615.414
 rotates = false
 cubic_interp = false
 script = ExtResource("5_plt10")
-follow_speed_pixels = 635.0
+follow_speed_pixels = 275.0
 
 [node name="Rotation" type="Node2D" parent="Path2D/PathFollow2D"]
 position = Vector2(0, 5)
-rotation = 52.2001
+rotation = 670.933
 script = ExtResource("5_i31n3")
 speed = 2.835
 
@@ -67,17 +67,17 @@ rotation = 3.14159
 curve = SubResource("Curve2D_3fsal")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(298.245, -534.384)
-progress = 930.247
+position = Vector2(171.472, -19.326)
+progress = 126.465
 rotates = false
 cubic_interp = false
 script = ExtResource("5_plt10")
-follow_speed_pixels = 635.0
-offset_pixels = 450.0
+follow_speed_pixels = 275.0
+offset_pixels = 445.0
 
 [node name="Rotation" type="Node2D" parent="Path2D2/PathFollow2D"]
 position = Vector2(0, 5)
-rotation = 52.2001
+rotation = 670.933
 script = ExtResource("5_i31n3")
 speed = 2.835
 
@@ -90,6 +90,5 @@ metadata/_edit_lock_ = true
 
 [node name="Wormhole" parent="." instance=ExtResource("3_npibn")]
 position = Vector2(-15.6906, -1146.48)
-next_level = "res://levels/gravity_pits.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_frwme")]

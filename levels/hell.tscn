@@ -75,6 +75,5 @@ scale = Vector2(1.09, 1.09)
 [node name="Wormhole" parent="." instance=ExtResource("3_ryxrj")]
 position = Vector2(-459, -2053)
 rotation = 0.246512
-next_level = "res://levels/end.tscn"
 
 [node name="Player" parent="." instance=ExtResource("4_ki28h")]

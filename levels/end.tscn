@@ -116,7 +116,7 @@ scale = Vector2(1.035, 1.035)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster/Path2D"]
-position = Vector2(-289.607, -170.003)
+position = Vector2(-289.606, -170.004)
 rotation = -0.523823
 progress = 307.003
 rotates = false
@@ -126,7 +126,6 @@ follow_speed_pixels = 310.0
 offset_pixels = 585.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D/PathFollow2D"]
-rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -161,7 +160,6 @@ follow_speed_pixels = 310.0
 offset_pixels = 325.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D2/PathFollow2D"]
-rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -186,7 +184,7 @@ scale = Vector2(1.035, 1.035)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster/Path2D3"]
-position = Vector2(-59.0079, -238.504)
+position = Vector2(-59.0074, -238.504)
 rotation = -0.523823
 progress = 562.003
 rotates = false
@@ -196,7 +194,6 @@ follow_speed_pixels = 310.0
 offset_pixels = 840.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster/Path2D3/PathFollow2D"]
-rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -233,7 +230,6 @@ script = ExtResource("7_tkpah")
 follow_speed_pixels = 475.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle/PathFollow2D"]
-rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 
@@ -257,7 +253,7 @@ rotation = -3.73668
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="HellCluster2/HellClusterObstacle2"]
-position = Vector2(-52.0042, -248.532)
+position = Vector2(-52.004, -248.532)
 rotation = -0.523823
 progress = 574.236
 rotates = false
@@ -267,7 +263,6 @@ follow_speed_pixels = 475.0
 offset_pixels = 1460.0
 
 [node name="Rotation" type="Node2D" parent="HellCluster2/HellClusterObstacle2/PathFollow2D"]
-rotation = -4124.36
 script = ExtResource("8_4prnx")
 speed = -2.64
 

@@ -9,12 +9,12 @@ position = Vector2(255.713, 384.906)
 scale = Vector2(1.035, 1.035)
 
 [node name="PathFollow2D" parent="Path2D" index="0"]
-position = Vector2(-528.01, -179.36)
-progress = 42.1846
+position = Vector2(-84.7431, -438.025)
+progress = 581.078
 offset_pixels = 585.0
 
 [node name="Rotation" parent="Path2D/PathFollow2D" index="0"]
-rotation = -21.9392
+rotation = -9.51647
 
 [node name="Path2D2" parent="." instance=ExtResource("1_75cer")]
 position = Vector2(-469.287, 31.9064)
@@ -22,11 +22,11 @@ rotation = 2.0944
 scale = Vector2(1.035, 1.035)
 
 [node name="PathFollow2D" parent="Path2D2" index="0"]
-position = Vector2(-401.368, -323.661)
-progress = 234.626
+position = Vector2(98.64, -385.022)
+progress = 773.52
 
 [node name="Rotation" parent="Path2D2/PathFollow2D" index="0"]
-rotation = -21.9392
+rotation = -9.51647
 
 [node name="Path2D3" parent="." instance=ExtResource("1_75cer")]
 position = Vector2(230.713, -400.094)
@@ -34,12 +34,12 @@ rotation = 4.18879
 scale = Vector2(1.035, 1.035)
 
 [node name="PathFollow2D" parent="Path2D3" index="0"]
-position = Vector2(-101.177, -438.777)
-progress = 564.626
+position = Vector2(-328.375, -378.581)
+progress = 326.078
 offset_pixels = 330.0
 
 [node name="Rotation" parent="Path2D3/PathFollow2D" index="0"]
-rotation = -21.9392
+rotation = -9.51647
 
 [editable path="Path2D"]
 [editable path="Path2D2"]

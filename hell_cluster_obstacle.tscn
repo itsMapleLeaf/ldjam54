@@ -16,16 +16,16 @@ position = Vector2(242, 298)
 curve = SubResource("Curve2D_ervwh")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(83.2815, -393.281)
+position = Vector2(-23.7223, -429.806)
 rotation = -0.523823
-progress = 756.078
+progress = 642.699
 rotates = false
 cubic_interp = false
 script = ExtResource("1_4e0he")
-follow_speed_pixels = 310.0
+follow_speed_pixels = 185.0
 
 [node name="Rotation" type="Node2D" parent="PathFollow2D"]
-rotation = -132.305
+rotation = -75.7556
 script = ExtResource("2_tyfc6")
 speed = -2.64
 
